@@ -1,0 +1,357 @@
+CUDA available: True
+GPU: NVIDIA H100 NVL
+Train size: 75750
+Test size:  25250
+Classes:    101
+ResNet(
+  (conv1): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+  (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+  (relu): ReLU(inplace=True)
+  (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+  (layer1): Sequential(
+    (0): Bottleneck(
+      (conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (downsample): Sequential(
+        (0): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      )
+    )
+    (1): Bottleneck(
+      (conv1): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+    )
+    (2): Bottleneck(
+      (conv1): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+    )
+  )
+  (layer2): Sequential(
+    (0): Bottleneck(
+      (conv1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (downsample): Sequential(
+        (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      )
+    )
+    (1): Bottleneck(
+      (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+    )
+    (2): Bottleneck(
+      (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+    )
+    (3): Bottleneck(
+      (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+    )
+  )
+  (layer3): Sequential(
+    (0): Bottleneck(
+      (conv1): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (downsample): Sequential(
+        (0): Conv2d(512, 1024, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      )
+    )
+    (1): Bottleneck(
+      (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+    )
+    (2): Bottleneck(
+      (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+    )
+    (3): Bottleneck(
+      (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+    )
+    (4): Bottleneck(
+      (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+    )
+    (5): Bottleneck(
+      (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+    )
+  )
+  (layer4): Sequential(
+    (0): Bottleneck(
+      (conv1): Conv2d(1024, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (downsample): Sequential(
+        (0): Conv2d(1024, 2048, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      )
+    )
+    (1): Bottleneck(
+      (conv1): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+    )
+    (2): Bottleneck(
+      (conv1): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+    )
+  )
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+  (fc): Linear(in_features=2048, out_features=101, bias=True)
+)
+Epoch 1 | Loss: 4.4644 | Val Accuracy: 0.0733
+New best model saved (7.33%)
+Epoch 2 | Loss: 3.9158 | Val Accuracy: 0.1419
+New best model saved (14.19%)
+Epoch 3 | Loss: 3.5621 | Val Accuracy: 0.1956
+New best model saved (19.56%)
+Epoch 4 | Loss: 3.2103 | Val Accuracy: 0.2109
+New best model saved (21.09%)
+Epoch 5 | Loss: 2.8885 | Val Accuracy: 0.3290
+New best model saved (32.90%)
+Epoch 6 | Loss: 2.5903 | Val Accuracy: 0.4042
+New best model saved (40.42%)
+Epoch 7 | Loss: 2.3357 | Val Accuracy: 0.4437
+New best model saved (44.37%)
+Epoch 8 | Loss: 2.1295 | Val Accuracy: 0.4668
+New best model saved (46.68%)
+Epoch 9 | Loss: 1.9554 | Val Accuracy: 0.5383
+New best model saved (53.83%)
+Epoch 10 | Loss: 1.8157 | Val Accuracy: 0.5513
+New best model saved (55.13%)
+Epoch 11 | Loss: 1.3523 | Val Accuracy: 0.6629
+New best model saved (66.29%)
+Epoch 12 | Loss: 1.2433 | Val Accuracy: 0.6768
+New best model saved (67.68%)
+Epoch 13 | Loss: 1.1903 | Val Accuracy: 0.6808
+New best model saved (68.08%)
+Epoch 14 | Loss: 1.1444 | Val Accuracy: 0.6815
+New best model saved (68.15%)
+Epoch 15 | Loss: 1.1030 | Val Accuracy: 0.6859
+New best model saved (68.59%)
+Epoch 16 | Loss: 1.0638 | Val Accuracy: 0.6895
+New best model saved (68.95%)
+Epoch 17 | Loss: 1.0249 | Val Accuracy: 0.6901
+New best model saved (69.01%)
+Epoch 18 | Loss: 0.9859 | Val Accuracy: 0.6971
+New best model saved (69.71%)
+Epoch 19 | Loss: 0.9486 | Val Accuracy: 0.6913
+No improvement (1/5)
+Epoch 20 | Loss: 0.9106 | Val Accuracy: 0.6976
+New best model saved (69.76%)
+Epoch 21 | Loss: 0.7999 | Val Accuracy: 0.7130
+New best model saved (71.30%)
+Epoch 22 | Loss: 0.7783 | Val Accuracy: 0.7122
+No improvement (1/5)
+Epoch 23 | Loss: 0.7691 | Val Accuracy: 0.7130
+No improvement (2/5)
+Epoch 24 | Loss: 0.7593 | Val Accuracy: 0.7144
+New best model saved (71.44%)
+Epoch 25 | Loss: 0.7522 | Val Accuracy: 0.7145
+New best model saved (71.45%)
+Epoch 26 | Loss: 0.7420 | Val Accuracy: 0.7154
+New best model saved (71.54%)
+Epoch 27 | Loss: 0.7393 | Val Accuracy: 0.7148
+No improvement (1/5)
+Epoch 28 | Loss: 0.7292 | Val Accuracy: 0.7132
+No improvement (2/5)
+Epoch 29 | Loss: 0.7244 | Val Accuracy: 0.7137
+No improvement (3/5)
+Epoch 30 | Loss: 0.7199 | Val Accuracy: 0.7138
+No improvement (4/5)
+Epoch 31 | Loss: 0.7073 | Val Accuracy: 0.7153
+No improvement (5/5)
+Early stopping triggered at epoch 31
+
+Training complete. Best Val Accuracy: 71.54%
+
+Top-1 Accuracy: 71.54%
+                         precision    recall  f1-score   support
+
+              apple_pie       0.49      0.36      0.42       250
+         baby_back_ribs       0.72      0.68      0.70       250
+                baklava       0.76      0.75      0.76       250
+         beef_carpaccio       0.81      0.85      0.83       250
+           beef_tartare       0.72      0.72      0.72       250
+             beet_salad       0.61      0.71      0.65       250
+               beignets       0.79      0.85      0.82       250
+               bibimbap       0.85      0.84      0.84       250
+          bread_pudding       0.52      0.54      0.53       250
+      breakfast_burrito       0.58      0.43      0.49       250
+             bruschetta       0.66      0.62      0.64       250
+           caesar_salad       0.72      0.82      0.77       250
+                cannoli       0.72      0.69      0.71       250
+          caprese_salad       0.70      0.74      0.72       250
+            carrot_cake       0.70      0.72      0.71       250
+                ceviche       0.60      0.61      0.60       250
+           cheese_plate       0.61      0.72      0.66       250
+             cheesecake       0.66      0.56      0.61       250
+          chicken_curry       0.66      0.62      0.64       250
+     chicken_quesadilla       0.68      0.68      0.68       250
+          chicken_wings       0.71      0.79      0.75       250
+         chocolate_cake       0.67      0.63      0.65       250
+       chocolate_mousse       0.48      0.58      0.53       250
+                churros       0.72      0.76      0.74       250
+           clam_chowder       0.81      0.82      0.81       250
+          club_sandwich       0.77      0.76      0.76       250
+             crab_cakes       0.61      0.61      0.61       250
+           creme_brulee       0.85      0.89      0.87       250
+          croque_madame       0.78      0.82      0.80       250
+              cup_cakes       0.72      0.78      0.75       250
+           deviled_eggs       0.84      0.86      0.85       250
+                 donuts       0.70      0.65      0.67       250
+              dumplings       0.87      0.85      0.86       250
+                edamame       0.97      0.99      0.98       250
+          eggs_benedict       0.83      0.84      0.84       250
+              escargots       0.77      0.78      0.78       250
+                falafel       0.68      0.65      0.67       250
+           filet_mignon       0.54      0.58      0.56       250
+         fish_and_chips       0.72      0.78      0.75       250
+              foie_gras       0.53      0.49      0.51       250
+           french_fries       0.81      0.85      0.83       250
+      french_onion_soup       0.70      0.79      0.75       250
+           french_toast       0.67      0.69      0.68       250
+         fried_calamari       0.71      0.74      0.72       250
+             fried_rice       0.79      0.73      0.76       250
+          frozen_yogurt       0.82      0.80      0.81       250
+           garlic_bread       0.72      0.61      0.66       250
+                gnocchi       0.64      0.62      0.63       250
+            greek_salad       0.70      0.74      0.72       250
+grilled_cheese_sandwich       0.57      0.68      0.62       250
+         grilled_salmon       0.56      0.53      0.54       250
+              guacamole       0.81      0.86      0.83       250
+                  gyoza       0.72      0.74      0.73       250
+              hamburger       0.71      0.63      0.67       250
+      hot_and_sour_soup       0.91      0.88      0.90       250
+                hot_dog       0.79      0.73      0.76       250
+       huevos_rancheros       0.54      0.52      0.53       250
+                 hummus       0.64      0.57      0.60       250
+              ice_cream       0.53      0.50      0.52       250
+                lasagna       0.68      0.63      0.65       250
+         lobster_bisque       0.79      0.86      0.82       250
+  lobster_roll_sandwich       0.85      0.82      0.83       250
+    macaroni_and_cheese       0.71      0.71      0.71       250
+               macarons       0.85      0.86      0.86       250
+              miso_soup       0.90      0.88      0.89       250
+                mussels       0.82      0.84      0.83       250
+                 nachos       0.66      0.64      0.65       250
+               omelette       0.61      0.54      0.57       250
+            onion_rings       0.78      0.83      0.80       250
+                oysters       0.83      0.88      0.85       250
+               pad_thai       0.80      0.84      0.82       250
+                 paella       0.66      0.76      0.70       250
+               pancakes       0.79      0.76      0.77       250
+            panna_cotta       0.71      0.64      0.67       250
+            peking_duck       0.72      0.73      0.72       250
+                    pho       0.90      0.91      0.91       250
+                  pizza       0.78      0.83      0.81       250
+              pork_chop       0.49      0.40      0.44       250
+                poutine       0.84      0.81      0.82       250
+              prime_rib       0.77      0.80      0.78       250
+   pulled_pork_sandwich       0.69      0.69      0.69       250
+                  ramen       0.75      0.75      0.75       250
+                ravioli       0.56      0.44      0.50       250
+        red_velvet_cake       0.79      0.82      0.81       250
+                risotto       0.55      0.57      0.56       250
+                 samosa       0.68      0.60      0.64       250
+                sashimi       0.81      0.82      0.82       250
+               scallops       0.59      0.61      0.60       250
+          seaweed_salad       0.88      0.83      0.86       250
+       shrimp_and_grits       0.60      0.64      0.62       250
+    spaghetti_bolognese       0.86      0.86      0.86       250
+    spaghetti_carbonara       0.88      0.88      0.88       250
+           spring_rolls       0.71      0.64      0.67       250
+                  steak       0.48      0.45      0.47       250
+   strawberry_shortcake       0.73      0.76      0.75       250
+                  sushi       0.69      0.76      0.73       250
+                  tacos       0.57      0.58      0.58       250
+               takoyaki       0.80      0.79      0.80       250
+               tiramisu       0.72      0.72      0.72       250
+           tuna_tartare       0.62      0.62      0.62       250
+                waffles       0.75      0.77      0.76       250
+
+               accuracy                           0.72     25250
+              macro avg       0.71      0.72      0.71     25250
+           weighted avg       0.71      0.72      0.71     25250
+
+Model saved!
