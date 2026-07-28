@@ -1,0 +1,229 @@
+CUDA available: True
+GPU: NVIDIA H100 NVL
+Train size: 75750
+Test size:  25250
+Classes:    101
+AlexNet(
+  (features): Sequential(
+    (0): Conv2d(3, 96, kernel_size=(11, 11), stride=(4, 4))
+    (1): ReLU(inplace=True)
+    (2): LocalResponseNorm(5, alpha=0.0001, beta=0.75, k=2)
+    (3): MaxPool2d(kernel_size=3, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (4): Conv2d(96, 256, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2))
+    (5): ReLU(inplace=True)
+    (6): LocalResponseNorm(5, alpha=0.0001, beta=0.75, k=2)
+    (7): MaxPool2d(kernel_size=3, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (8): Conv2d(256, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (9): ReLU(inplace=True)
+    (10): Conv2d(384, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (11): ReLU(inplace=True)
+    (12): Conv2d(384, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (13): ReLU(inplace=True)
+    (14): MaxPool2d(kernel_size=3, stride=2, padding=0, dilation=1, ceil_mode=False)
+  )
+  (classifier): Sequential(
+    (0): Dropout(p=0.5, inplace=False)
+    (1): Linear(in_features=9216, out_features=4096, bias=True)
+    (2): ReLU(inplace=True)
+    (3): Dropout(p=0.5, inplace=False)
+    (4): Linear(in_features=4096, out_features=4096, bias=True)
+    (5): ReLU(inplace=True)
+    (6): Linear(in_features=4096, out_features=101, bias=True)
+  )
+)
+Epoch 1 | Loss: 4.6096 | Val Accuracy: 0.0174
+New best model saved (1.74%)
+Epoch 2 | Loss: 4.4974 | Val Accuracy: 0.0309
+New best model saved (3.09%)
+Epoch 3 | Loss: 4.3220 | Val Accuracy: 0.0807
+New best model saved (8.07%)
+Epoch 4 | Loss: 4.0073 | Val Accuracy: 0.1177
+New best model saved (11.77%)
+Epoch 5 | Loss: 3.7449 | Val Accuracy: 0.1753
+New best model saved (17.53%)
+Epoch 6 | Loss: 3.5051 | Val Accuracy: 0.2120
+New best model saved (21.20%)
+Epoch 7 | Loss: 3.2910 | Val Accuracy: 0.2800
+New best model saved (28.00%)
+Epoch 8 | Loss: 3.0986 | Val Accuracy: 0.3130
+New best model saved (31.30%)
+Epoch 9 | Loss: 2.9503 | Val Accuracy: 0.3236
+New best model saved (32.36%)
+Epoch 10 | Loss: 2.8095 | Val Accuracy: 0.3623
+New best model saved (36.23%)
+Epoch 11 | Loss: 2.3446 | Val Accuracy: 0.4488
+New best model saved (44.88%)
+Epoch 12 | Loss: 2.2301 | Val Accuracy: 0.4573
+New best model saved (45.73%)
+Epoch 13 | Loss: 2.1721 | Val Accuracy: 0.4683
+New best model saved (46.83%)
+Epoch 14 | Loss: 2.1221 | Val Accuracy: 0.4737
+New best model saved (47.37%)
+Epoch 15 | Loss: 2.0782 | Val Accuracy: 0.4811
+New best model saved (48.11%)
+Epoch 16 | Loss: 2.0393 | Val Accuracy: 0.4887
+New best model saved (48.87%)
+Epoch 17 | Loss: 1.9934 | Val Accuracy: 0.4924
+New best model saved (49.24%)
+Epoch 18 | Loss: 1.9581 | Val Accuracy: 0.5017
+New best model saved (50.17%)
+Epoch 19 | Loss: 1.9196 | Val Accuracy: 0.5029
+New best model saved (50.29%)
+Epoch 20 | Loss: 1.8893 | Val Accuracy: 0.5073
+New best model saved (50.73%)
+Epoch 21 | Loss: 1.7717 | Val Accuracy: 0.5259
+New best model saved (52.59%)
+Epoch 22 | Loss: 1.7569 | Val Accuracy: 0.5267
+New best model saved (52.67%)
+Epoch 23 | Loss: 1.7471 | Val Accuracy: 0.5268
+New best model saved (52.68%)
+Epoch 24 | Loss: 1.7375 | Val Accuracy: 0.5279
+New best model saved (52.79%)
+Epoch 25 | Loss: 1.7332 | Val Accuracy: 0.5277
+No improvement (1/5)
+Epoch 26 | Loss: 1.7268 | Val Accuracy: 0.5288
+New best model saved (52.88%)
+Epoch 27 | Loss: 1.7210 | Val Accuracy: 0.5297
+New best model saved (52.97%)
+Epoch 28 | Loss: 1.7185 | Val Accuracy: 0.5301
+New best model saved (53.01%)
+Epoch 29 | Loss: 1.7119 | Val Accuracy: 0.5296
+No improvement (1/5)
+Epoch 30 | Loss: 1.7018 | Val Accuracy: 0.5320
+New best model saved (53.20%)
+Epoch 31 | Loss: 1.6849 | Val Accuracy: 0.5331
+New best model saved (53.31%)
+Epoch 32 | Loss: 1.6878 | Val Accuracy: 0.5333
+New best model saved (53.33%)
+Epoch 33 | Loss: 1.6876 | Val Accuracy: 0.5335
+New best model saved (53.35%)
+Epoch 34 | Loss: 1.6814 | Val Accuracy: 0.5328
+No improvement (1/5)
+Epoch 35 | Loss: 1.6832 | Val Accuracy: 0.5329
+No improvement (2/5)
+Epoch 36 | Loss: 1.6867 | Val Accuracy: 0.5343
+New best model saved (53.43%)
+Epoch 37 | Loss: 1.6810 | Val Accuracy: 0.5339
+No improvement (1/5)
+Epoch 38 | Loss: 1.6826 | Val Accuracy: 0.5336
+No improvement (2/5)
+Epoch 39 | Loss: 1.6800 | Val Accuracy: 0.5335
+No improvement (3/5)
+Epoch 40 | Loss: 1.6752 | Val Accuracy: 0.5337
+No improvement (4/5)
+Epoch 41 | Loss: 1.6783 | Val Accuracy: 0.5337
+No improvement (5/5)
+Early stopping triggered at epoch 41
+
+Training complete. Best Val Accuracy: 53.43%
+
+Top-1 Accuracy: 53.43%
+                         precision    recall  f1-score   support
+
+              apple_pie       0.27      0.18      0.22       250
+         baby_back_ribs       0.53      0.54      0.53       250
+                baklava       0.55      0.56      0.56       250
+         beef_carpaccio       0.68      0.72      0.70       250
+           beef_tartare       0.50      0.52      0.51       250
+             beet_salad       0.48      0.50      0.49       250
+               beignets       0.68      0.73      0.70       250
+               bibimbap       0.66      0.78      0.71       250
+          bread_pudding       0.36      0.34      0.35       250
+      breakfast_burrito       0.28      0.19      0.23       250
+             bruschetta       0.48      0.47      0.47       250
+           caesar_salad       0.59      0.70      0.64       250
+                cannoli       0.49      0.48      0.48       250
+          caprese_salad       0.49      0.52      0.50       250
+            carrot_cake       0.62      0.54      0.58       250
+                ceviche       0.28      0.26      0.27       250
+           cheese_plate       0.37      0.46      0.41       250
+             cheesecake       0.46      0.42      0.44       250
+          chicken_curry       0.53      0.40      0.45       250
+     chicken_quesadilla       0.43      0.45      0.44       250
+          chicken_wings       0.56      0.62      0.59       250
+         chocolate_cake       0.51      0.56      0.53       250
+       chocolate_mousse       0.36      0.41      0.38       250
+                churros       0.53      0.57      0.55       250
+           clam_chowder       0.63      0.69      0.66       250
+          club_sandwich       0.50      0.54      0.52       250
+             crab_cakes       0.38      0.35      0.37       250
+           creme_brulee       0.64      0.76      0.69       250
+          croque_madame       0.69      0.73      0.71       250
+              cup_cakes       0.59      0.60      0.59       250
+           deviled_eggs       0.62      0.76      0.68       250
+                 donuts       0.51      0.40      0.45       250
+              dumplings       0.76      0.77      0.76       250
+                edamame       0.94      0.91      0.92       250
+          eggs_benedict       0.57      0.69      0.63       250
+              escargots       0.61      0.66      0.63       250
+                falafel       0.47      0.36      0.41       250
+           filet_mignon       0.39      0.38      0.38       250
+         fish_and_chips       0.46      0.54      0.50       250
+              foie_gras       0.37      0.32      0.34       250
+           french_fries       0.61      0.75      0.68       250
+      french_onion_soup       0.59      0.68      0.63       250
+           french_toast       0.43      0.47      0.45       250
+         fried_calamari       0.50      0.50      0.50       250
+             fried_rice       0.54      0.49      0.52       250
+          frozen_yogurt       0.62      0.67      0.64       250
+           garlic_bread       0.51      0.44      0.47       250
+                gnocchi       0.50      0.42      0.46       250
+            greek_salad       0.54      0.61      0.57       250
+grilled_cheese_sandwich       0.38      0.30      0.33       250
+         grilled_salmon       0.37      0.31      0.34       250
+              guacamole       0.63      0.71      0.67       250
+                  gyoza       0.45      0.48      0.47       250
+              hamburger       0.46      0.47      0.46       250
+      hot_and_sour_soup       0.75      0.76      0.75       250
+                hot_dog       0.59      0.56      0.58       250
+       huevos_rancheros       0.39      0.35      0.37       250
+                 hummus       0.35      0.24      0.28       250
+              ice_cream       0.33      0.29      0.31       250
+                lasagna       0.50      0.44      0.47       250
+         lobster_bisque       0.70      0.73      0.71       250
+  lobster_roll_sandwich       0.61      0.58      0.59       250
+    macaroni_and_cheese       0.52      0.56      0.54       250
+               macarons       0.67      0.71      0.69       250
+              miso_soup       0.80      0.77      0.79       250
+                mussels       0.69      0.78      0.73       250
+                 nachos       0.41      0.39      0.40       250
+               omelette       0.33      0.29      0.31       250
+            onion_rings       0.63      0.64      0.64       250
+                oysters       0.69      0.78      0.73       250
+               pad_thai       0.57      0.67      0.62       250
+                 paella       0.49      0.56      0.52       250
+               pancakes       0.58      0.54      0.56       250
+            panna_cotta       0.48      0.47      0.47       250
+            peking_duck       0.55      0.52      0.53       250
+                    pho       0.73      0.84      0.78       250
+                  pizza       0.67      0.69      0.68       250
+              pork_chop       0.37      0.33      0.35       250
+                poutine       0.61      0.66      0.63       250
+              prime_rib       0.59      0.71      0.64       250
+   pulled_pork_sandwich       0.41      0.42      0.41       250
+                  ramen       0.51      0.59      0.55       250
+                ravioli       0.37      0.20      0.26       250
+        red_velvet_cake       0.74      0.67      0.70       250
+                risotto       0.43      0.32      0.37       250
+                 samosa       0.42      0.39      0.41       250
+                sashimi       0.63      0.72      0.67       250
+               scallops       0.38      0.30      0.34       250
+          seaweed_salad       0.81      0.80      0.80       250
+       shrimp_and_grits       0.42      0.48      0.45       250
+    spaghetti_bolognese       0.62      0.69      0.66       250
+    spaghetti_carbonara       0.68      0.75      0.71       250
+           spring_rolls       0.49      0.42      0.46       250
+                  steak       0.38      0.32      0.35       250
+   strawberry_shortcake       0.57      0.68      0.62       250
+                  sushi       0.45      0.49      0.47       250
+                  tacos       0.36      0.32      0.34       250
+               takoyaki       0.55      0.58      0.56       250
+               tiramisu       0.53      0.52      0.52       250
+           tuna_tartare       0.40      0.37      0.39       250
+                waffles       0.47      0.44      0.45       250
+
+               accuracy                           0.53     25250
+              macro avg       0.53      0.53      0.53     25250
+           weighted avg       0.53      0.53      0.53     25250
+
+Model saved!

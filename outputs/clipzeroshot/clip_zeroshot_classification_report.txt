@@ -1,0 +1,110 @@
+Top-1 Accuracy: 84.19%
+Top-5 Accuracy: 97.36%
+
+                         precision    recall  f1-score   support
+
+              apple_pie       0.84      0.58      0.69       250
+         baby_back_ribs       0.81      0.83      0.82       250
+                baklava       0.88      0.82      0.85       250
+         beef_carpaccio       0.77      0.86      0.82       250
+           beef_tartare       0.81      0.81      0.81       250
+             beet_salad       0.75      0.75      0.75       250
+               beignets       0.85      0.92      0.88       250
+               bibimbap       0.97      0.94      0.95       250
+          bread_pudding       0.56      0.84      0.67       250
+      breakfast_burrito       0.80      0.77      0.78       250
+             bruschetta       0.85      0.79      0.82       250
+           caesar_salad       0.74      0.94      0.83       250
+                cannoli       0.86      0.90      0.88       250
+          caprese_salad       0.81      0.90      0.85       250
+            carrot_cake       0.82      0.88      0.85       250
+                ceviche       0.87      0.67      0.76       250
+           cheese_plate       0.91      0.94      0.93       250
+             cheesecake       0.81      0.73      0.77       250
+          chicken_curry       0.87      0.74      0.80       250
+     chicken_quesadilla       0.65      0.91      0.76       250
+          chicken_wings       0.88      0.96      0.92       250
+         chocolate_cake       0.78      0.79      0.78       250
+       chocolate_mousse       0.65      0.74      0.69       250
+                churros       0.94      0.87      0.90       250
+           clam_chowder       0.85      0.87      0.86       250
+          club_sandwich       0.87      0.94      0.91       250
+             crab_cakes       0.76      0.84      0.80       250
+           creme_brulee       0.83      0.93      0.87       250
+          croque_madame       0.90      0.84      0.87       250
+              cup_cakes       0.90      0.74      0.81       250
+           deviled_eggs       0.96      0.94      0.95       250
+                 donuts       0.95      0.88      0.92       250
+              dumplings       0.89      0.90      0.90       250
+                edamame       0.99      1.00      0.99       250
+          eggs_benedict       0.77      0.96      0.86       250
+              escargots       0.92      0.81      0.86       250
+                falafel       0.93      0.81      0.87       250
+           filet_mignon       0.63      0.72      0.67       250
+         fish_and_chips       0.88      0.94      0.91       250
+              foie_gras       0.72      0.60      0.65       250
+           french_fries       0.92      0.92      0.92       250
+      french_onion_soup       0.75      0.88      0.81       250
+           french_toast       0.74      0.84      0.79       250
+         fried_calamari       0.77      0.89      0.82       250
+             fried_rice       0.93      0.87      0.90       250
+          frozen_yogurt       0.90      0.96      0.93       250
+           garlic_bread       0.89      0.78      0.83       250
+                gnocchi       0.90      0.71      0.80       250
+            greek_salad       0.88      0.84      0.86       250
+grilled_cheese_sandwich       0.88      0.74      0.80       250
+         grilled_salmon       0.83      0.81      0.82       250
+              guacamole       0.97      0.88      0.92       250
+                  gyoza       0.88      0.80      0.84       250
+              hamburger       0.94      0.75      0.84       250
+      hot_and_sour_soup       0.76      0.92      0.83       250
+                hot_dog       0.98      0.90      0.94       250
+       huevos_rancheros       0.67      0.88      0.76       250
+                 hummus       0.94      0.75      0.84       250
+              ice_cream       0.89      0.78      0.83       250
+                lasagna       0.86      0.73      0.79       250
+         lobster_bisque       0.75      0.91      0.82       250
+  lobster_roll_sandwich       0.86      0.95      0.90       250
+    macaroni_and_cheese       0.95      0.74      0.83       250
+               macarons       1.00      0.97      0.98       250
+              miso_soup       0.87      0.90      0.88       250
+                mussels       0.97      0.91      0.94       250
+                 nachos       0.79      0.91      0.84       250
+               omelette       0.81      0.76      0.79       250
+            onion_rings       0.87      0.87      0.87       250
+                oysters       0.96      0.99      0.98       250
+               pad_thai       0.86      0.96      0.90       250
+                 paella       0.94      0.87      0.91       250
+               pancakes       0.95      0.91      0.93       250
+            panna_cotta       0.81      0.81      0.81       250
+            peking_duck       0.96      0.77      0.86       250
+                    pho       0.94      0.94      0.94       250
+                  pizza       0.94      0.95      0.95       250
+              pork_chop       0.68      0.62      0.64       250
+                poutine       0.92      0.92      0.92       250
+              prime_rib       0.75      0.84      0.79       250
+   pulled_pork_sandwich       0.76      0.94      0.84       250
+                  ramen       0.98      0.78      0.87       250
+                ravioli       0.82      0.57      0.67       250
+        red_velvet_cake       0.72      0.93      0.81       250
+                risotto       0.79      0.79      0.79       250
+                 samosa       0.88      0.75      0.81       250
+                sashimi       0.88      0.96      0.91       250
+               scallops       0.88      0.70      0.78       250
+          seaweed_salad       0.89      0.94      0.91       250
+       shrimp_and_grits       0.70      0.90      0.79       250
+    spaghetti_bolognese       0.94      0.95      0.94       250
+    spaghetti_carbonara       0.96      0.96      0.96       250
+           spring_rolls       0.82      0.90      0.86       250
+                  steak       0.63      0.55      0.59       250
+   strawberry_shortcake       0.86      0.81      0.83       250
+                  sushi       0.96      0.88      0.91       250
+                  tacos       0.89      0.81      0.85       250
+               takoyaki       0.90      0.90      0.90       250
+               tiramisu       0.82      0.74      0.78       250
+           tuna_tartare       0.71      0.67      0.69       250
+                waffles       0.95      0.88      0.91       250
+
+               accuracy                           0.84     25250
+              macro avg       0.85      0.84      0.84     25250
+           weighted avg       0.85      0.84      0.84     25250

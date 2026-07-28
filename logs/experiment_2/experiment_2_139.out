@@ -1,0 +1,25 @@
+CUDA available: True
+GPU: NVIDIA H100 NVL
+Test size: 25250
+Classes: 101
+['apple_pie', 'baby_back_ribs', 'baklava', 'beef_carpaccio', 'beef_tartare']
+Image features shape: torch.Size([25250, 512])
+Baseline (Experiment 1) — Top-1: 84.19%  Top-5: 97.36%
+a photo of {class}                            Top-1: 80.17%  Top-5: 96.08%
+a photo of {class}, a type of food            Top-1: 84.19%  Top-5: 97.36%
+a dish of {class}                             Top-1: 83.65%  Top-5: 97.20%
+{class}, a food dish                          Top-1: 83.86%  Top-5: 97.41%
+an image of {class} food                      Top-1: 82.58%  Top-5: 97.07%
+
+ENSEMBLE (avg of all 5)                       Top-1: 84.14%  Top-5: 97.48%
+                         prompt_style   top1_acc   top5_acc
+0  a photo of {class}, a type of food  84.186139  97.362376
+1             ENSEMBLE (avg of all 5)  84.142574  97.477228
+2                {class}, a food dish  83.857426  97.413861
+3                   a dish of {class}  83.651485  97.196040
+4            an image of {class} food  82.582178  97.069307
+5                  a photo of {class}  80.166337  96.075248
+
+Best single prompt: a photo of {class}, a type of food (84.19%)
+Ensemble accuracy: 84.14%
+Ensemble vs best single: -0.04 pts
