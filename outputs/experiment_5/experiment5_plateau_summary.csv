@@ -1,0 +1,6 @@
+Model,Final Accuracy (100% data),Plateau Reached At (%),Accuracy At Plateau (%)
+CLIP Linear Probe,87.39,50,86.44
+AlexNet,51.12,100,51.12
+ResNet50,69.66,100,69.66
+ResNet34,70.86,100,70.86
+YOLOv8s-cls,82.01,100,82.01

@@ -1,0 +1,122 @@
+CUDA available: True
+GPU: NVIDIA H100 NVL
+Train size: 75750  Test size: 25250  Classes: 101
+Loaded cached train features: (75750, 512)
+Loaded cached test features: (25250, 512)
+Training linear probe (logistic regression) on frozen CLIP features...
+Training completed in 115.7s
+Linear Probe Top-1 Accuracy: 87.41%
+                         precision    recall  f1-score   support
+
+              apple_pie       0.79      0.71      0.75       250
+         baby_back_ribs       0.88      0.87      0.88       250
+                baklava       0.85      0.87      0.86       250
+         beef_carpaccio       0.87      0.89      0.88       250
+           beef_tartare       0.83      0.83      0.83       250
+             beet_salad       0.79      0.82      0.81       250
+               beignets       0.88      0.91      0.90       250
+               bibimbap       0.96      0.94      0.95       250
+          bread_pudding       0.73      0.73      0.73       250
+      breakfast_burrito       0.83      0.81      0.82       250
+             bruschetta       0.83      0.86      0.84       250
+           caesar_salad       0.86      0.94      0.90       250
+                cannoli       0.90      0.90      0.90       250
+          caprese_salad       0.86      0.91      0.89       250
+            carrot_cake       0.88      0.85      0.86       250
+                ceviche       0.80      0.74      0.77       250
+           cheese_plate       0.95      0.93      0.94       250
+             cheesecake       0.83      0.76      0.80       250
+          chicken_curry       0.87      0.84      0.85       250
+     chicken_quesadilla       0.87      0.86      0.86       250
+          chicken_wings       0.92      0.95      0.93       250
+         chocolate_cake       0.77      0.82      0.79       250
+       chocolate_mousse       0.70      0.75      0.72       250
+                churros       0.92      0.87      0.90       250
+           clam_chowder       0.87      0.92      0.89       250
+          club_sandwich       0.93      0.93      0.93       250
+             crab_cakes       0.78      0.83      0.80       250
+           creme_brulee       0.88      0.90      0.89       250
+          croque_madame       0.88      0.89      0.89       250
+              cup_cakes       0.94      0.95      0.94       250
+           deviled_eggs       0.95      0.94      0.94       250
+                 donuts       0.92      0.90      0.91       250
+              dumplings       0.93      0.90      0.91       250
+                edamame       1.00      1.00      1.00       250
+          eggs_benedict       0.91      0.93      0.92       250
+              escargots       0.90      0.90      0.90       250
+                falafel       0.90      0.82      0.86       250
+           filet_mignon       0.69      0.74      0.72       250
+         fish_and_chips       0.93      0.94      0.94       250
+              foie_gras       0.68      0.74      0.71       250
+           french_fries       0.93      0.94      0.93       250
+      french_onion_soup       0.84      0.88      0.86       250
+           french_toast       0.82      0.82      0.82       250
+         fried_calamari       0.89      0.87      0.88       250
+             fried_rice       0.89      0.92      0.91       250
+          frozen_yogurt       0.94      0.95      0.95       250
+           garlic_bread       0.86      0.86      0.86       250
+                gnocchi       0.85      0.78      0.81       250
+            greek_salad       0.87      0.88      0.88       250
+grilled_cheese_sandwich       0.80      0.89      0.84       250
+         grilled_salmon       0.86      0.85      0.85       250
+              guacamole       0.96      0.94      0.95       250
+                  gyoza       0.88      0.88      0.88       250
+              hamburger       0.91      0.90      0.91       250
+      hot_and_sour_soup       0.89      0.96      0.92       250
+                hot_dog       0.95      0.95      0.95       250
+       huevos_rancheros       0.83      0.84      0.84       250
+                 hummus       0.91      0.88      0.89       250
+              ice_cream       0.91      0.85      0.88       250
+                lasagna       0.84      0.82      0.83       250
+         lobster_bisque       0.89      0.90      0.89       250
+  lobster_roll_sandwich       0.96      0.93      0.95       250
+    macaroni_and_cheese       0.86      0.87      0.87       250
+               macarons       0.96      0.96      0.96       250
+              miso_soup       0.93      0.90      0.92       250
+                mussels       0.96      0.92      0.94       250
+                 nachos       0.89      0.88      0.89       250
+               omelette       0.82      0.86      0.84       250
+            onion_rings       0.90      0.93      0.91       250
+                oysters       0.96      0.98      0.97       250
+               pad_thai       0.90      0.96      0.93       250
+                 paella       0.91      0.90      0.91       250
+               pancakes       0.97      0.89      0.93       250
+            panna_cotta       0.78      0.89      0.83       250
+            peking_duck       0.92      0.88      0.90       250
+                    pho       0.96      0.94      0.95       250
+                  pizza       0.94      0.94      0.94       250
+              pork_chop       0.73      0.69      0.71       250
+                poutine       0.96      0.89      0.93       250
+              prime_rib       0.86      0.85      0.85       250
+   pulled_pork_sandwich       0.89      0.92      0.90       250
+                  ramen       0.93      0.93      0.93       250
+                ravioli       0.78      0.74      0.76       250
+        red_velvet_cake       0.94      0.91      0.92       250
+                risotto       0.84      0.81      0.82       250
+                 samosa       0.87      0.85      0.86       250
+                sashimi       0.93      0.95      0.94       250
+               scallops       0.81      0.78      0.80       250
+          seaweed_salad       0.95      0.94      0.95       250
+       shrimp_and_grits       0.80      0.85      0.82       250
+    spaghetti_bolognese       0.96      0.96      0.96       250
+    spaghetti_carbonara       0.98      0.95      0.96       250
+           spring_rolls       0.90      0.86      0.88       250
+                  steak       0.63      0.59      0.61       250
+   strawberry_shortcake       0.86      0.89      0.88       250
+                  sushi       0.92      0.90      0.91       250
+                  tacos       0.89      0.90      0.89       250
+               takoyaki       0.89      0.92      0.90       250
+               tiramisu       0.81      0.74      0.77       250
+           tuna_tartare       0.73      0.73      0.73       250
+                waffles       0.92      0.94      0.93       250
+
+               accuracy                           0.87     25250
+              macro avg       0.87      0.87      0.87     25250
+           weighted avg       0.87      0.87      0.87     25250
+
+                                       method   top1_acc  improvement_pts
+0               Zero-Shot CLIP (Experiment 1)  84.190000         0.000000
+1  Linear Probe on Frozen CLIP (Experiment 3)  87.413861         3.223861
+
+Experiment 3 complete.
+Zero-shot: 84.19%  ->  Linear probe: 87.41%  (+3.22 pts)

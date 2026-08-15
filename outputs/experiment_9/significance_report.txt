@@ -1,0 +1,300 @@
+
+======================================================================
+AlexNet  vs  ResNet34
+======================================================================
+  Accuracy: 53.35% vs 71.82%   difference -18.47 pts (95% CI [-19.07, -17.87])
+
+  McNemar, per image (N=25250):
+    both correct         12390
+    only AlexNet          1080
+    only ResNet34         5744
+    both wrong            6036
+    p = 0.000e+00   Holm-adjusted 0.000e+00  ***
+    odds ratio 0.19 (AlexNet uniquely correct that many times as often)
+
+  Wilcoxon, per class (n=101):
+    classes favouring AlexNet          0
+    classes favouring ResNet34       101
+    median per-class difference -17.60 pts
+    p = 2.659e-18   Holm-adjusted 3.970e-17  ***
+    rank-biserial -1.000
+
+======================================================================
+AlexNet  vs  ResNet50
+======================================================================
+  Accuracy: 53.35% vs 71.52%   difference -18.18 pts (95% CI [-18.77, -17.58])
+
+  McNemar, per image (N=25250):
+    both correct         12382
+    only AlexNet          1088
+    only ResNet50         5678
+    both wrong            6102
+    p = 0.000e+00   Holm-adjusted 0.000e+00  ***
+    odds ratio 0.19 (AlexNet uniquely correct that many times as often)
+
+  Wilcoxon, per class (n=101):
+    classes favouring AlexNet          0
+    classes favouring ResNet50       101
+    median per-class difference -18.40 pts
+    p = 2.660e-18   Holm-adjusted 3.970e-17  ***
+    rank-biserial -1.000
+
+======================================================================
+AlexNet  vs  YOLOv8s
+======================================================================
+  Accuracy: 53.35% vs 84.26%   difference -30.91 pts (95% CI [-31.54, -30.30])
+
+  McNemar, per image (N=25250):
+    both correct         12932
+    only AlexNet           538
+    only YOLOv8s          8344
+    both wrong            3436
+    p = 0.000e+00   Holm-adjusted 0.000e+00  ***
+    odds ratio 0.06 (AlexNet uniquely correct that many times as often)
+
+  Wilcoxon, per class (n=101):
+    classes favouring AlexNet          0
+    classes favouring YOLOv8s        101
+    median per-class difference -30.80 pts
+    p = 2.661e-18   Holm-adjusted 3.970e-17  ***
+    rank-biserial -1.000
+
+======================================================================
+AlexNet  vs  CLIP zero-shot
+======================================================================
+  Accuracy: 53.35% vs 84.19%   difference -30.84 pts (95% CI [-31.50, -30.18])
+
+  McNemar, per image (N=25250):
+    both correct         12611
+    only AlexNet           859
+    only CLIP zero-shot   8646
+    both wrong            3134
+    p = 0.000e+00   Holm-adjusted 0.000e+00  ***
+    odds ratio 0.10 (AlexNet uniquely correct that many times as often)
+
+  Wilcoxon, per class (n=101):
+    classes favouring AlexNet          0
+    classes favouring CLIP zero-shot 101
+    median per-class difference -29.60 pts
+    p = 2.659e-18   Holm-adjusted 3.970e-17  ***
+    rank-biserial -1.000
+
+======================================================================
+AlexNet  vs  SigLIP zero-shot
+======================================================================
+  Accuracy: 53.35% vs 91.62%   difference -38.27 pts (95% CI [-38.93, -37.64])
+
+  McNemar, per image (N=25250):
+    both correct         13045
+    only AlexNet           425
+    only SigLIP zero-sh  10089
+    both wrong            1691
+    p = 0.000e+00   Holm-adjusted 0.000e+00  ***
+    odds ratio 0.04 (AlexNet uniquely correct that many times as often)
+
+  Wilcoxon, per class (n=101):
+    classes favouring AlexNet          0
+    classes favouring SigLIP zero-sh 101
+    median per-class difference -39.60 pts
+    p = 2.659e-18   Holm-adjusted 3.970e-17  ***
+    rank-biserial -1.000
+
+======================================================================
+ResNet34  vs  ResNet50
+======================================================================
+  Accuracy: 71.82% vs 71.52%   difference +0.29 pts (95% CI [-0.17, +0.76])
+
+  McNemar, per image (N=25250):
+    both correct         16311
+    only ResNet34         1823
+    only ResNet50         1749
+    both wrong            5367
+    p = 2.219e-01   Holm-adjusted 4.438e-01  ns
+    odds ratio 1.04 (ResNet34 uniquely correct that many times as often)
+
+  Wilcoxon, per class (n=101):
+    classes favouring ResNet34        57
+    classes favouring ResNet50        42
+    median per-class difference +0.40 pts
+    p = 2.629e-01   Holm-adjusted 5.259e-01  ns
+    rank-biserial +0.129
+
+======================================================================
+ResNet34  vs  YOLOv8s
+======================================================================
+  Accuracy: 71.82% vs 84.26%   difference -12.44 pts (95% CI [-12.94, -11.93])
+
+  McNemar, per image (N=25250):
+    both correct         17382
+    only ResNet34          752
+    only YOLOv8s          3894
+    both wrong            3222
+    p = 0.000e+00   Holm-adjusted 0.000e+00  ***
+    odds ratio 0.19 (ResNet34 uniquely correct that many times as often)
+
+  Wilcoxon, per class (n=101):
+    classes favouring ResNet34         0
+    classes favouring YOLOv8s        101
+    median per-class difference -12.40 pts
+    p = 2.647e-18   Holm-adjusted 3.970e-17  ***
+    rank-biserial -1.000
+
+======================================================================
+ResNet34  vs  CLIP zero-shot
+======================================================================
+  Accuracy: 71.82% vs 84.19%   difference -12.37 pts (95% CI [-12.95, -11.79])
+
+  McNemar, per image (N=25250):
+    both correct         16794
+    only ResNet34         1340
+    only CLIP zero-shot   4463
+    both wrong            2653
+    p = 0.000e+00   Holm-adjusted 0.000e+00  ***
+    odds ratio 0.30 (ResNet34 uniquely correct that many times as often)
+
+  Wilcoxon, per class (n=101):
+    classes favouring ResNet34         0
+    classes favouring CLIP zero-shot 101
+    median per-class difference -12.00 pts
+    p = 2.659e-18   Holm-adjusted 3.970e-17  ***
+    rank-biserial -1.000
+
+======================================================================
+ResNet34  vs  SigLIP zero-shot
+======================================================================
+  Accuracy: 71.82% vs 91.62%   difference -19.80 pts (95% CI [-20.36, -19.24])
+
+  McNemar, per image (N=25250):
+    both correct         17503
+    only ResNet34          631
+    only SigLIP zero-sh   5631
+    both wrong            1485
+    p = 0.000e+00   Holm-adjusted 0.000e+00  ***
+    odds ratio 0.11 (ResNet34 uniquely correct that many times as often)
+
+  Wilcoxon, per class (n=101):
+    classes favouring ResNet34         0
+    classes favouring SigLIP zero-sh 101
+    median per-class difference -19.20 pts
+    p = 2.657e-18   Holm-adjusted 3.970e-17  ***
+    rank-biserial -1.000
+
+======================================================================
+ResNet50  vs  YOLOv8s
+======================================================================
+  Accuracy: 71.52% vs 84.26%   difference -12.74 pts (95% CI [-13.25, -12.23])
+
+  McNemar, per image (N=25250):
+    both correct         17321
+    only ResNet50          739
+    only YOLOv8s          3955
+    both wrong            3235
+    p = 0.000e+00   Holm-adjusted 0.000e+00  ***
+    odds ratio 0.19 (ResNet50 uniquely correct that many times as often)
+
+  Wilcoxon, per class (n=101):
+    classes favouring ResNet50         0
+    classes favouring YOLOv8s        100
+    median per-class difference -12.40 pts
+    p = 3.860e-18   Holm-adjusted 3.970e-17  ***
+    rank-biserial -1.000
+
+======================================================================
+ResNet50  vs  CLIP zero-shot
+======================================================================
+  Accuracy: 71.52% vs 84.19%   difference -12.66 pts (95% CI [-13.24, -12.09])
+
+  McNemar, per image (N=25250):
+    both correct         16715
+    only ResNet50         1345
+    only CLIP zero-shot   4542
+    both wrong            2648
+    p = 0.000e+00   Holm-adjusted 0.000e+00  ***
+    odds ratio 0.30 (ResNet50 uniquely correct that many times as often)
+
+  Wilcoxon, per class (n=101):
+    classes favouring ResNet50         1
+    classes favouring CLIP zero-shot 100
+    median per-class difference -11.20 pts
+    p = 4.277e-18   Holm-adjusted 3.970e-17  ***
+    rank-biserial -0.994
+
+======================================================================
+ResNet50  vs  SigLIP zero-shot
+======================================================================
+  Accuracy: 71.52% vs 91.62%   difference -20.10 pts (95% CI [-20.66, -19.53])
+
+  McNemar, per image (N=25250):
+    both correct         17451
+    only ResNet50          609
+    only SigLIP zero-sh   5683
+    both wrong            1507
+    p = 0.000e+00   Holm-adjusted 0.000e+00  ***
+    odds ratio 0.11 (ResNet50 uniquely correct that many times as often)
+
+  Wilcoxon, per class (n=101):
+    classes favouring ResNet50         0
+    classes favouring SigLIP zero-sh 101
+    median per-class difference -19.20 pts
+    p = 2.656e-18   Holm-adjusted 3.970e-17  ***
+    rank-biserial -1.000
+
+======================================================================
+YOLOv8s  vs  CLIP zero-shot
+======================================================================
+  Accuracy: 84.26% vs 84.19%   difference +0.08 pts (95% CI [-0.40, +0.56])
+
+  McNemar, per image (N=25250):
+    both correct         19306
+    only YOLOv8s          1970
+    only CLIP zero-shot   1951
+    both wrong            2023
+    p = 7.738e-01   Holm-adjusted 7.738e-01  ns
+    odds ratio 1.01 (YOLOv8s uniquely correct that many times as often)
+
+  Wilcoxon, per class (n=101):
+    classes favouring YOLOv8s         42
+    classes favouring CLIP zero-shot  54
+    median per-class difference -0.40 pts
+    p = 9.461e-01   Holm-adjusted 9.461e-01  ns
+    rank-biserial +0.008
+
+======================================================================
+YOLOv8s  vs  SigLIP zero-shot
+======================================================================
+  Accuracy: 84.26% vs 91.62%   difference -7.36 pts (95% CI [-7.81, -6.91])
+
+  McNemar, per image (N=25250):
+    both correct         20424
+    only YOLOv8s           852
+    only SigLIP zero-sh   2710
+    both wrong            1264
+    p = 1.526e-212   Holm-adjusted 4.578e-212  ***
+    odds ratio 0.31 (YOLOv8s uniquely correct that many times as often)
+
+  Wilcoxon, per class (n=101):
+    classes favouring YOLOv8s          9
+    classes favouring SigLIP zero-sh  91
+    median per-class difference -6.40 pts
+    p = 8.193e-15   Holm-adjusted 2.458e-14  ***
+    rank-biserial -0.894
+
+======================================================================
+CLIP zero-shot  vs  SigLIP zero-shot
+======================================================================
+  Accuracy: 84.19% vs 91.62%   difference -7.43 pts (95% CI [-7.86, -7.02])
+
+  McNemar, per image (N=25250):
+    both correct         20666
+    only CLIP zero-shot    591
+    only SigLIP zero-sh   2468
+    both wrong            1525
+    p = 3.495e-252   Holm-adjusted 1.398e-251  ***
+    odds ratio 0.24 (CLIP zero-shot uniquely correct that many times as often)
+
+  Wilcoxon, per class (n=101):
+    classes favouring CLIP zero-shot   6
+    classes favouring SigLIP zero-sh  93
+    median per-class difference -5.60 pts
+    p = 3.427e-16   Holm-adjusted 1.371e-15  ***
+    rank-biserial -0.944

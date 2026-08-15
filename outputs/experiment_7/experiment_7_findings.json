@@ -1,0 +1,44 @@
+{
+  "model": "google/siglip-base-patch16-224",
+  "top1_acc": 91.61980198019802,
+  "top5_acc": 98.99009900990099,
+  "clip_top1_acc": 84.19,
+  "delta_vs_clip": 7.429801980198022,
+  "ensemble_top1": 91.75049504950495,
+  "prompt_spread_pts": 4.293069306930704,
+  "patch_tokens": 196,
+  "embed_dim": 768,
+  "total_params": 203155970,
+  "prompt_results": [
+    {
+      "prompt_style": "a photo of {class}",
+      "top1_acc": 92.00792079207922,
+      "top5_acc": 99.04554455445545
+    },
+    {
+      "prompt_style": "ENSEMBLE (avg of all 5)",
+      "top1_acc": 91.75049504950495,
+      "top5_acc": 99.05346534653465
+    },
+    {
+      "prompt_style": "a dish of {class}",
+      "top1_acc": 91.71485148514851,
+      "top5_acc": 98.95049504950495
+    },
+    {
+      "prompt_style": "a photo of {class}, a type of food",
+      "top1_acc": 91.61980198019802,
+      "top5_acc": 98.99009900990099
+    },
+    {
+      "prompt_style": "{class}, a food dish",
+      "top1_acc": 91.07722772277228,
+      "top5_acc": 98.91485148514852
+    },
+    {
+      "prompt_style": "an image of {class} food",
+      "top1_acc": 87.71485148514851,
+      "top5_acc": 98.22178217821782
+    }
+  ]
+}

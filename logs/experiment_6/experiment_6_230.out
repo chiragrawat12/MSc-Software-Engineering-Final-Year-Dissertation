@@ -1,0 +1,94 @@
+Hostname: rockhill
+CUDA available: True
+GPU: NVIDIA H100 NVL
+K values: [1, 2, 4, 8, 16]   trials per K: 5
+Zero-shot anchor: 84.19%
+Project root: /home/chirag.singh/project
+Outputs: /home/chirag.singh/project/outputs/experiment_6
+Train: 75750   Test: 25250   Classes: 101
+Train pool: 68175   Validation: 7575
+Per class: 675 train, 75 val
+CLIP loaded: openai/clip-vit-base-patch32  (151,277,313 parameters, all frozen)
+Smoke test output: (4, 512)
+Encoder verified: correct dimensionality, unit-norm output.
+Loaded cached pool features (experiment 6)
+Loaded cached val features (experiment 6)
+Loaded cached test features (experiment 6)
+Pool : (68175, 512)
+Val  : (7575, 512)
+Test : (25250, 512)
+Sampling verified: nested across K, correct counts.
+
+==================================================================
+K = 1  (101 training images total)
+==================================================================
+  trial 0: C=100     val=40.21%  TEST=43.19%
+  trial 1: C=100     val=35.37%  TEST=37.40%
+  trial 2: C=100     val=38.89%  TEST=40.94%
+  trial 3: C=10      val=41.35%  TEST=43.61%
+  trial 4: C=10      val=39.71%  TEST=41.36%
+
+==================================================================
+K = 2  (202 training images total)
+==================================================================
+  trial 0: C=100     val=54.02%  TEST=57.92%
+  trial 1: C=10      val=50.13%  TEST=52.75%
+  trial 2: C=100     val=51.46%  TEST=54.53%
+  trial 3: C=100     val=51.10%  TEST=54.54%
+  trial 4: C=100     val=51.71%  TEST=54.60%
+
+==================================================================
+K = 4  (404 training images total)
+==================================================================
+  trial 0: C=100     val=63.52%  TEST=68.05%
+  trial 1: C=10      val=62.94%  TEST=67.11%
+  trial 2: C=100     val=62.18%  TEST=66.11%
+  trial 3: C=100     val=63.60%  TEST=67.14%
+  trial 4: C=100     val=63.91%  TEST=67.67%
+
+==================================================================
+K = 8  (808 training images total)
+==================================================================
+  trial 0: C=10      val=71.43%  TEST=76.04%
+  trial 1: C=10      val=70.40%  TEST=75.36%
+  trial 2: C=10      val=70.46%  TEST=75.00%
+  trial 3: C=10      val=71.05%  TEST=75.79%
+  trial 4: C=10      val=71.26%  TEST=76.27%
+
+==================================================================
+K = 16  (1616 training images total)
+==================================================================
+  trial 0: C=10      val=76.20%  TEST=80.66%
+  trial 1: C=10      val=75.26%  TEST=80.11%
+  trial 2: C=10      val=75.02%  TEST=79.74%
+  trial 3: C=10      val=75.75%  TEST=80.16%
+  trial 4: C=10      val=75.50%  TEST=80.55%
+
+Saved per-trial results -> /home/chirag.singh/project/outputs/experiment_6/fewshot_results.csv
+ K  train_images  mean_test_acc  std_test_acc  min_test_acc  max_test_acc  modal_C  vs_zeroshot_pts
+ 1           101          41.30          2.46         37.40         43.61    100.0           -42.89
+ 2           202          54.87          1.88         52.75         57.92    100.0           -29.32
+ 4           404          67.21          0.73         66.11         68.05    100.0           -16.98
+ 8           808          75.69          0.51         75.00         76.27     10.0            -8.50
+16          1616          80.24          0.37         79.74         80.66     10.0            -3.95
+
+Saved summary -> /home/chirag.singh/project/outputs/experiment_6/fewshot_summary.csv
+Figure -> /home/chirag.singh/project/outputs/experiment_6/images/fewshot_curve.png
+Experiment 5 results not found at /home/chirag.singh/project/outputs/experiment_5/experiment5_data_efficiency_results.csv; plotting few-shot curve alone.
+Figure -> /home/chirag.singh/project/outputs/experiment_6/images/fewshot_vs_experiment5.png
+======================================================================
+EXPERIMENT 6 SUMMARY
+======================================================================
+Zero-shot (K=0):  84.19%
+
+K= 1  ( 101 images,  0.15% of pool):  41.30% +/- 2.46   (-42.89 pts vs zero-shot)
+K= 2  ( 202 images,  0.30% of pool):  54.87% +/- 1.88   (-29.32 pts vs zero-shot)
+K= 4  ( 404 images,  0.59% of pool):  67.21% +/- 0.73   (-16.98 pts vs zero-shot)
+K= 8  ( 808 images,  1.19% of pool):  75.69% +/- 0.51   (-8.50 pts vs zero-shot)
+K=16  (1616 images,  2.37% of pool):  80.24% +/- 0.37   (-3.95 pts vs zero-shot)
+
+Few-shot does not overtake zero-shot within K <= 16. This is itself a finding: CLIP's pre-trained alignment is stronger than what a probe can learn from this little supervision.
+
+Largest standard deviation across trials: 2.46 pts (at K=1), which is why single-run few-shot numbers are unreliable.
+
+Experiment 6 complete.

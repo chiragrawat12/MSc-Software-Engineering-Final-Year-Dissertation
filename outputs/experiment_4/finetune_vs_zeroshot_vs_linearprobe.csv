@@ -1,0 +1,4 @@
+method,top1_acc,improvement_vs_zeroshot_pts
+Zero-Shot CLIP (Experiment 1),84.19,0.0
+Linear Probe (Experiment 3),87.41386138613862,3.2238613861386227
+Full Fine-Tune (Experiment 4),86.66138613861386,2.471386138613866

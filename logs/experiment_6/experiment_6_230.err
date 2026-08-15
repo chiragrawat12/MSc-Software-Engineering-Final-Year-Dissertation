@@ -1,0 +1,51 @@
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights: 100%|██████████| 398/398 [00:00<00:00, 6696.43it/s]
+/home/chirag.singh/envs/myenv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1469: UserWarning: The number of unique classes is greater than 50% of the number of samples. `y` could represent a regression problem, not a classification problem.
+  check_classification_targets(y)
+/home/chirag.singh/envs/myenv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1469: UserWarning: The number of unique classes is greater than 50% of the number of samples. `y` could represent a regression problem, not a classification problem.
+  check_classification_targets(y)
+/home/chirag.singh/envs/myenv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1469: UserWarning: The number of unique classes is greater than 50% of the number of samples. `y` could represent a regression problem, not a classification problem.
+  check_classification_targets(y)
+/home/chirag.singh/envs/myenv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1469: UserWarning: The number of unique classes is greater than 50% of the number of samples. `y` could represent a regression problem, not a classification problem.
+  check_classification_targets(y)
+/home/chirag.singh/envs/myenv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1469: UserWarning: The number of unique classes is greater than 50% of the number of samples. `y` could represent a regression problem, not a classification problem.
+  check_classification_targets(y)
+/home/chirag.singh/envs/myenv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1469: UserWarning: The number of unique classes is greater than 50% of the number of samples. `y` could represent a regression problem, not a classification problem.
+  check_classification_targets(y)
+/home/chirag.singh/envs/myenv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1469: UserWarning: The number of unique classes is greater than 50% of the number of samples. `y` could represent a regression problem, not a classification problem.
+  check_classification_targets(y)
+/home/chirag.singh/envs/myenv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1469: UserWarning: The number of unique classes is greater than 50% of the number of samples. `y` could represent a regression problem, not a classification problem.
+  check_classification_targets(y)
+/home/chirag.singh/envs/myenv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1469: UserWarning: The number of unique classes is greater than 50% of the number of samples. `y` could represent a regression problem, not a classification problem.
+  check_classification_targets(y)
+/home/chirag.singh/envs/myenv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1469: UserWarning: The number of unique classes is greater than 50% of the number of samples. `y` could represent a regression problem, not a classification problem.
+  check_classification_targets(y)
+/home/chirag.singh/envs/myenv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1469: UserWarning: The number of unique classes is greater than 50% of the number of samples. `y` could represent a regression problem, not a classification problem.
+  check_classification_targets(y)
+/home/chirag.singh/envs/myenv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1469: UserWarning: The number of unique classes is greater than 50% of the number of samples. `y` could represent a regression problem, not a classification problem.
+  check_classification_targets(y)
+/home/chirag.singh/envs/myenv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1469: UserWarning: The number of unique classes is greater than 50% of the number of samples. `y` could represent a regression problem, not a classification problem.
+  check_classification_targets(y)
+/home/chirag.singh/envs/myenv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1469: UserWarning: The number of unique classes is greater than 50% of the number of samples. `y` could represent a regression problem, not a classification problem.
+  check_classification_targets(y)
+/home/chirag.singh/envs/myenv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1469: UserWarning: The number of unique classes is greater than 50% of the number of samples. `y` could represent a regression problem, not a classification problem.
+  check_classification_targets(y)
+/home/chirag.singh/envs/myenv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1469: UserWarning: The number of unique classes is greater than 50% of the number of samples. `y` could represent a regression problem, not a classification problem.
+  check_classification_targets(y)
+/home/chirag.singh/envs/myenv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1469: UserWarning: The number of unique classes is greater than 50% of the number of samples. `y` could represent a regression problem, not a classification problem.
+  check_classification_targets(y)
+/home/chirag.singh/envs/myenv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1469: UserWarning: The number of unique classes is greater than 50% of the number of samples. `y` could represent a regression problem, not a classification problem.
+  check_classification_targets(y)
+/home/chirag.singh/envs/myenv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1469: UserWarning: The number of unique classes is greater than 50% of the number of samples. `y` could represent a regression problem, not a classification problem.
+  check_classification_targets(y)
+/home/chirag.singh/envs/myenv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1469: UserWarning: The number of unique classes is greater than 50% of the number of samples. `y` could represent a regression problem, not a classification problem.
+  check_classification_targets(y)
+/home/chirag.singh/envs/myenv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1469: UserWarning: The number of unique classes is greater than 50% of the number of samples. `y` could represent a regression problem, not a classification problem.
+  check_classification_targets(y)
+/home/chirag.singh/envs/myenv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1469: UserWarning: The number of unique classes is greater than 50% of the number of samples. `y` could represent a regression problem, not a classification problem.
+  check_classification_targets(y)
+/home/chirag.singh/envs/myenv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1469: UserWarning: The number of unique classes is greater than 50% of the number of samples. `y` could represent a regression problem, not a classification problem.
+  check_classification_targets(y)
+/home/chirag.singh/envs/myenv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1469: UserWarning: The number of unique classes is greater than 50% of the number of samples. `y` could represent a regression problem, not a classification problem.
+  check_classification_targets(y)
+/home/chirag.singh/envs/myenv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1469: UserWarning: The number of unique classes is greater than 50% of the number of samples. `y` could represent a regression problem, not a classification problem.
+  check_classification_targets(y)

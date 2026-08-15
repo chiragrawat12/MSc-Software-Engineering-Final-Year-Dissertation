@@ -1,0 +1,34 @@
+Device: cuda
+GPU: NVIDIA H100 NVL
+
+Weight files:
+  alexnet    FOUND    models/alexnet/saved_models/alexnet_food101.pth 235 MB
+  resnet34   FOUND    models/resnet34/saved_models/resnet34_food101.pth 85 MB
+  resnet50   FOUND    models/resnet50/saved_models/resnet50_food101.pth 95 MB
+  yolo       FOUND    models/yolo/saved_models/yolov8s_food101.pt 11 MB
+
+alexnet: loading models/alexnet/saved_models/alexnet_food101.pth
+   top-1 53.35%   top-5 79.94%   -> /home/chirag.singh/project/outputs/alexnet
+
+resnet34: loading models/resnet34/saved_models/resnet34_food101.pth
+   top-1 71.82%   top-5 91.50%   -> /home/chirag.singh/project/outputs/resnet34
+
+resnet50: loading models/resnet50/saved_models/resnet50_food101.pth
+   top-1 71.52%   top-5 91.48%   -> /home/chirag.singh/project/outputs/resnet50
+
+yolo: loading models/yolo/saved_models/yolov8s_food101.pt
+   top-1 84.26%   top-5 96.44%   -> /home/chirag.singh/project/outputs/yolo
+
+============================================================
+Reference ordering: alexnet (25250 images)
+  resnet34: ordering matches alexnet
+  resnet50: ordering matches alexnet
+  yolo: ordering matches alexnet
+
+Accuracies:
+  alexnet     53.35%
+  resnet34    71.82%
+  resnet50    71.52%
+  yolo        84.26%
+
+Now re-run check_predictions.py; it should report everything present.

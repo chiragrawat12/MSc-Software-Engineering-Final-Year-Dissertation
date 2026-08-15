@@ -1,0 +1,112 @@
+Hostname: rockhill
+CUDA available: True
+GPU: NVIDIA H100 NVL
+Tokenizer dependencies present: sentencepiece, protobuf
+Model: google/siglip-base-patch16-224
+Outputs: /home/chirag.singh/project/outputs/experiment_7
+Total parameters : 203,155,970
+  vision encoder : 92,884,224
+  text encoder   : 110,271,744
+
+Image size : 224
+Patch size : 16
+Patch tokens: 196   (CLIP ViT-B/32 has 49)
+Embedding dim: 768   (CLIP has 512)
+Test size: 25250   Classes: 101
+First five classes: ['apple_pie', 'baby_back_ribs', 'baklava', 'beef_carpaccio', 'beef_tartare']
+a photo of {class}                       -> a photo of apple pie
+a photo of {class}, a type of food       -> a photo of apple pie, a type of food
+a dish of {class}                        -> a dish of apple pie
+{class}, a food dish                     -> apple pie, a food dish
+an image of {class} food                 -> an image of apple pie food
+Expected embedding dimension: 768
+Model has visual_projection: False
+Model has text_projection  : False
+a photo of {class}                       encoded -> (101, 768)
+a photo of {class}, a type of food       encoded -> (101, 768)
+a dish of {class}                        encoded -> (101, 768)
+{class}, a food dish                     encoded -> (101, 768)
+an image of {class} food                 encoded -> (101, 768)
+
+Ensemble features: (101, 768)
+Smoke test output: (4, 768)
+Encoder verified: correct dimensionality, unit-norm output.
+Image features: (25250, 768)
+logit_scale = 117.3308
+logit_bias  = -12.9324
+a photo of {class}                       Top-1: 92.01%   Top-5: 99.05%
+a photo of {class}, a type of food       Top-1: 91.62%   Top-5: 98.99%
+a dish of {class}                        Top-1: 91.71%   Top-5: 98.95%
+{class}, a food dish                     Top-1: 91.08%   Top-5: 98.91%
+an image of {class} food                 Top-1: 87.71%   Top-5: 98.22%
+
+ENSEMBLE (avg of all 5)                  Top-1: 91.75%   Top-5: 99.05%
+
+                      prompt_style  top1_acc  top5_acc
+                a photo of {class}     92.01     99.05
+           ENSEMBLE (avg of all 5)     91.75     99.05
+                 a dish of {class}     91.71     98.95
+a photo of {class}, a type of food     91.62     98.99
+              {class}, a food dish     91.08     98.91
+          an image of {class} food     87.71     98.22
+SigLIP zero-shot (baseline prompt)
+  Top-1: 91.62%
+  Top-5: 98.99%
+
+CLIP zero-shot (Experiment 1)
+  Top-1: 84.19%
+
+Difference: +7.43 points
+
+Report -> /home/chirag.singh/project/outputs/experiment_7/siglip_classification_report.txt
+Label ordering matches the CLIP run: predictions are pairable.
+15 most semantically similar class-name pairs (SigLIP text space):
+
+ 1. filet_mignon                 <-> steak                        0.9386
+ 2. beef_tartare                 <-> tuna_tartare                 0.9348
+ 3. pancakes                     <-> waffles                      0.9302
+ 4. sashimi                      <-> sushi                        0.9289
+ 5. hamburger                    <-> steak                        0.9263
+ 6. pork_chop                    <-> steak                        0.9259
+ 7. chocolate_cake               <-> chocolate_mousse             0.9236
+ 8. cheesecake                   <-> chocolate_cake               0.9201
+ 9. prime_rib                    <-> steak                        0.9197
+10. nachos                       <-> tacos                        0.9167
+11. hamburger                    <-> pizza                        0.9165
+12. chocolate_cake               <-> red_velvet_cake              0.9165
+13. mussels                      <-> oysters                      0.9142
+14. frozen_yogurt                <-> ice_cream                    0.9138
+15. dumplings                    <-> gyoza                        0.9137
+Top 10 most-confused pairs, with their text-space similarity:
+
+true                         predicted                       rate  text sim
+steak                        filet_mignon                   20.4%    0.9386
+cup_cakes                    red_velvet_cake                18.8%    0.8650
+ice_cream                    frozen_yogurt                  18.8%    0.9138
+chocolate_cake               chocolate_mousse               18.4%    0.9236
+beef_tartare                 tuna_tartare                   14.8%    0.9348
+apple_pie                    bread_pudding                  10.0%    0.8680
+gyoza                        dumplings                       9.2%    0.9137
+filet_mignon                 steak                           8.8%    0.9386
+clam_chowder                 lobster_bisque                  8.0%    0.8278
+prime_rib                    steak                           6.8%    0.9197
+Figures written to /home/chirag.singh/project/outputs/experiment_7/images
+         model           objective  patch_tokens  embed_dim  top1_acc  delta_vs_clip
+ CLIP ViT-B/32 softmax contrastive            49        512     84.19           0.00
+SigLIP base/16    pairwise sigmoid           196        768     91.62           7.43
+======================================================================
+EXPERIMENT 7 SUMMARY
+======================================================================
+SigLIP base/16 zero-shot Top-1 : 91.62%
+SigLIP base/16 zero-shot Top-5 : 98.99%
+CLIP ViT-B/32 zero-shot Top-1  : 84.19%
+Difference                     : +7.43 pts
+
+Best single prompt : a photo of {class} (92.01%)
+Ensemble           : 91.75% (-0.26 pts vs best single)
+Prompt spread      : 4.29 pts across the five templates
+
+Compare this spread against the equivalent figure from Experiment 2 to
+state whether SigLIP is more or less prompt-sensitive than CLIP.
+
+Experiment 7 complete.

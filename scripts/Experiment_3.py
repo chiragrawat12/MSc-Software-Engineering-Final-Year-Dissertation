@@ -169,7 +169,7 @@ else:
     print("Test features shape:", test_features.shape)
 
 
-# In[ ]:
+# In[1]:
 
 
 print("Training linear probe (logistic regression) on frozen CLIP features...")
@@ -178,7 +178,6 @@ start = time.time()
 classifier = LogisticRegression(
     max_iter=1000,
     C=1.0,
-    multi_class="multinomial",
     n_jobs=-1,
     random_state=42
 )

@@ -1,0 +1,95 @@
+{
+  "grid_size": 27,
+  "epochs_per_run": 18,
+  "patience": 3,
+  "batch_sizes": [
+    16,
+    32,
+    64
+  ],
+  "optimizers": [
+    "sgd",
+    "adam",
+    "adamw"
+  ],
+  "schedulers": [
+    "fixed",
+    "plateau",
+    "cosine"
+  ],
+  "best_config": {
+    "batch_size": 16,
+    "optimizer": "sgd",
+    "scheduler": "cosine",
+    "best_val_acc": 69.37293729372938,
+    "test_acc": 75.25148514851485,
+    "epochs_run": 18,
+    "train_time_min": 49.487236773967744,
+    "tag": "bs16_sgd_cosine"
+  },
+  "summary": [
+    {
+      "Factor": "batch_size",
+      "Level": 16,
+      "Mean Test Acc (%)": 57.39361936193619,
+      "Std Dev (%)": 15.026885743405254,
+      "N Runs": 9
+    },
+    {
+      "Factor": "batch_size",
+      "Level": 32,
+      "Mean Test Acc (%)": 61.053025302530244,
+      "Std Dev (%)": 10.49450333801063,
+      "N Runs": 9
+    },
+    {
+      "Factor": "batch_size",
+      "Level": 64,
+      "Mean Test Acc (%)": 62.789878987898796,
+      "Std Dev (%)": 8.729225001397971,
+      "N Runs": 9
+    },
+    {
+      "Factor": "optimizer",
+      "Level": "adam",
+      "Mean Test Acc (%)": 46.46864686468646,
+      "Std Dev (%)": 8.082366883880152,
+      "N Runs": 9
+    },
+    {
+      "Factor": "optimizer",
+      "Level": "adamw",
+      "Mean Test Acc (%)": 68.0972497249725,
+      "Std Dev (%)": 2.2428836025673897,
+      "N Runs": 9
+    },
+    {
+      "Factor": "optimizer",
+      "Level": "sgd",
+      "Mean Test Acc (%)": 66.67062706270627,
+      "Std Dev (%)": 5.443070184917465,
+      "N Runs": 9
+    },
+    {
+      "Factor": "scheduler",
+      "Level": "cosine",
+      "Mean Test Acc (%)": 64.3964796479648,
+      "Std Dev (%)": 10.570888966291841,
+      "N Runs": 9
+    },
+    {
+      "Factor": "scheduler",
+      "Level": "fixed",
+      "Mean Test Acc (%)": 57.300770077007705,
+      "Std Dev (%)": 11.647603042938176,
+      "N Runs": 9
+    },
+    {
+      "Factor": "scheduler",
+      "Level": "plateau",
+      "Mean Test Acc (%)": 59.53927392739274,
+      "Std Dev (%)": 12.336797513334295,
+      "N Runs": 9
+    }
+  ]
+}

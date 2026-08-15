@@ -1,0 +1,10 @@
+{
+  "batch_size": 16,
+  "optimizer": "sgd",
+  "scheduler": "cosine",
+  "best_val_acc": 69.37293729372938,
+  "test_acc": 75.25148514851485,
+  "epochs_run": 18,
+  "train_time_min": 49.487236773967744,
+  "tag": "bs16_sgd_cosine"
+}

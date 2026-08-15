@@ -1,0 +1,228 @@
+Hostname: rockhill
+CUDA available: True
+GPU: NVIDIA H100 NVL
+Project root: /home/chirag.singh/project
+Outputs: /home/chirag.singh/project/outputs/experiment_8
+Train: 75750  Test: 25250  Classes: 101
+Train pool: 68175  Validation: 7575
+Total configurations: 27
+[1/27] Starting bs16_sgd_fixed
+[1/27] Done bs16_sgd_fixed: val=53.98%  test=59.09%  (43.5 min)
+[2/27] Starting bs16_sgd_plateau
+[2/27] Done bs16_sgd_plateau: val=61.21%  test=65.43%  (48.6 min)
+[3/27] Starting bs16_sgd_cosine
+[3/27] Done bs16_sgd_cosine: val=69.37%  test=75.25%  (49.5 min)
+[4/27] Starting bs16_adam_fixed
+[4/27] Done bs16_adam_fixed: val=31.92%  test=35.93%  (39.3 min)
+[5/27] Starting bs16_adam_plateau
+[5/27] Done bs16_adam_plateau: val=32.83%  test=37.23%  (47.3 min)
+[6/27] Starting bs16_adam_cosine
+[6/27] Done bs16_adam_cosine: val=38.19%  test=41.78%  (47.5 min)
+[7/27] Starting bs16_adamw_fixed
+[7/27] Done bs16_adamw_fixed: val=64.77%  test=70.36%  (49.1 min)
+[8/27] Starting bs16_adamw_plateau
+[8/27] Done bs16_adamw_plateau: val=59.49%  test=64.75%  (48.0 min)
+[9/27] Starting bs16_adamw_cosine
+[9/27] Done bs16_adamw_cosine: val=61.17%  test=66.72%  (49.6 min)
+[10/27] Starting bs32_sgd_fixed
+[10/27] Done bs32_sgd_fixed: val=57.40%  test=62.00%  (26.3 min)
+[11/27] Starting bs32_sgd_plateau
+[11/27] Done bs32_sgd_plateau: val=63.64%  test=69.07%  (26.9 min)
+[12/27] Starting bs32_sgd_cosine
+[12/27] Done bs32_sgd_cosine: val=67.75%  test=73.14%  (27.6 min)
+[13/27] Starting bs32_adam_fixed
+[13/27] Done bs32_adam_fixed: val=40.99%  test=45.47%  (30.8 min)
+[14/27] Starting bs32_adam_plateau
+[14/27] Done bs32_adam_plateau: val=39.63%  test=44.65%  (32.5 min)
+[15/27] Starting bs32_adam_cosine
+[15/27] Done bs32_adam_cosine: val=49.27%  test=54.13%  (29.9 min)
+[16/27] Starting bs32_adamw_fixed
+[16/27] Done bs32_adamw_fixed: val=60.44%  test=65.39%  (28.1 min)
+[17/27] Starting bs32_adamw_plateau
+[17/27] Done bs32_adamw_plateau: val=63.39%  test=67.72%  (31.1 min)
+[18/27] Starting bs32_adamw_cosine
+[18/27] Done bs32_adamw_cosine: val=62.24%  test=67.89%  (31.7 min)
+[19/27] Starting bs64_sgd_fixed
+[19/27] Done bs64_sgd_fixed: val=56.63%  test=60.91%  (19.6 min)
+[20/27] Starting bs64_sgd_plateau
+[20/27] Done bs64_sgd_plateau: val=62.84%  test=67.30%  (19.1 min)
+[21/27] Starting bs64_sgd_cosine
+[21/27] Done bs64_sgd_cosine: val=62.97%  test=67.83%  (19.2 min)
+[22/27] Starting bs64_adam_fixed
+[22/27] Done bs64_adam_fixed: val=43.30%  test=47.97%  (18.1 min)
+[23/27] Starting bs64_adam_plateau
+[23/27] Done bs64_adam_plateau: val=45.20%  test=49.41%  (19.4 min)
+[24/27] Starting bs64_adam_cosine
+[24/27] Done bs64_adam_cosine: val=56.41%  test=61.64%  (20.2 min)
+[25/27] Starting bs64_adamw_fixed
+[25/27] Done bs64_adamw_fixed: val=63.46%  test=68.59%  (20.8 min)
+[26/27] Starting bs64_adamw_plateau
+[26/27] Done bs64_adamw_plateau: val=65.28%  test=70.29%  (19.8 min)
+[27/27] Starting bs64_adamw_cosine
+[27/27] Done bs64_adamw_cosine: val=65.76%  test=71.17%  (19.2 min)
+ batch_size optimizer scheduler  best_val_acc  test_acc  epochs_run  train_time_min                tag
+         16       sgd     fixed         53.98     59.09          18           43.49     bs16_sgd_fixed
+         16       sgd   plateau         61.21     65.43          18           48.58   bs16_sgd_plateau
+         16       sgd    cosine         69.37     75.25          18           49.49    bs16_sgd_cosine
+         16      adam     fixed         31.92     35.93          18           39.33    bs16_adam_fixed
+         16      adam   plateau         32.83     37.23          18           47.32  bs16_adam_plateau
+         16      adam    cosine         38.19     41.78          18           47.50   bs16_adam_cosine
+         16     adamw     fixed         64.77     70.36          18           49.14   bs16_adamw_fixed
+         16     adamw   plateau         59.49     64.75          18           47.97 bs16_adamw_plateau
+         16     adamw    cosine         61.17     66.72          18           49.57  bs16_adamw_cosine
+         32       sgd     fixed         57.40     62.00          18           26.27     bs32_sgd_fixed
+         32       sgd   plateau         63.64     69.07          18           26.94   bs32_sgd_plateau
+         32       sgd    cosine         67.75     73.14          18           27.65    bs32_sgd_cosine
+         32      adam     fixed         40.99     45.47          18           30.80    bs32_adam_fixed
+         32      adam   plateau         39.63     44.65          18           32.46  bs32_adam_plateau
+         32      adam    cosine         49.27     54.13          18           29.87   bs32_adam_cosine
+         32     adamw     fixed         60.44     65.39          16           28.12   bs32_adamw_fixed
+         32     adamw   plateau         63.39     67.72          18           31.08 bs32_adamw_plateau
+         32     adamw    cosine         62.24     67.89          18           31.68  bs32_adamw_cosine
+         64       sgd     fixed         56.63     60.91          18           19.61     bs64_sgd_fixed
+         64       sgd   plateau         62.84     67.30          18           19.10   bs64_sgd_plateau
+         64       sgd    cosine         62.97     67.83          18           19.19    bs64_sgd_cosine
+         64      adam     fixed         43.30     47.97          17           18.08    bs64_adam_fixed
+         64      adam   plateau         45.20     49.41          18           19.37  bs64_adam_plateau
+         64      adam    cosine         56.41     61.64          18           20.20   bs64_adam_cosine
+         64     adamw     fixed         63.46     68.59          18           20.79   bs64_adamw_fixed
+         64     adamw   plateau         65.28     70.29          18           19.81 bs64_adamw_plateau
+         64     adamw    cosine         65.76     71.17          18           19.22  bs64_adamw_cosine
+    Factor   Level  Mean Test Acc (%)  Std Dev (%)  N Runs
+batch_size      16              57.39        15.03       9
+batch_size      32              61.05        10.49       9
+batch_size      64              62.79         8.73       9
+ optimizer    adam              46.47         8.08       9
+ optimizer   adamw              68.10         2.24       9
+ optimizer     sgd              66.67         5.44       9
+ scheduler  cosine              64.40        10.57       9
+ scheduler   fixed              57.30        11.65       9
+ scheduler plateau              59.54        12.34       9
+
+Summary table saved -> /home/chirag.singh/project/outputs/experiment_8/grid_summary.csv
+============================================================
+BEST CONFIGURATION
+============================================================
+Batch size : 16
+Optimizer  : sgd
+Scheduler  : cosine
+Val Acc    : 69.37%
+Test Acc   : 75.25%
+Epochs run : 18
+
+Best config saved -> /home/chirag.singh/project/outputs/experiment_8/best_config.json
+Figures saved.
+                         precision    recall  f1-score   support
+
+              apple_pie       0.53      0.44      0.48       250
+         baby_back_ribs       0.75      0.73      0.74       250
+                baklava       0.76      0.83      0.79       250
+         beef_carpaccio       0.83      0.83      0.83       250
+           beef_tartare       0.76      0.76      0.76       250
+             beet_salad       0.68      0.70      0.69       250
+               beignets       0.80      0.82      0.81       250
+               bibimbap       0.86      0.89      0.87       250
+          bread_pudding       0.60      0.53      0.56       250
+      breakfast_burrito       0.58      0.54      0.56       250
+             bruschetta       0.66      0.71      0.68       250
+           caesar_salad       0.75      0.84      0.80       250
+                cannoli       0.75      0.79      0.77       250
+          caprese_salad       0.72      0.78      0.75       250
+            carrot_cake       0.66      0.79      0.72       250
+                ceviche       0.70      0.54      0.61       250
+           cheese_plate       0.67      0.77      0.72       250
+             cheesecake       0.62      0.63      0.63       250
+          chicken_curry       0.73      0.68      0.70       250
+     chicken_quesadilla       0.67      0.78      0.72       250
+          chicken_wings       0.81      0.80      0.81       250
+         chocolate_cake       0.67      0.70      0.69       250
+       chocolate_mousse       0.59      0.59      0.59       250
+                churros       0.83      0.81      0.82       250
+           clam_chowder       0.85      0.84      0.85       250
+          club_sandwich       0.80      0.83      0.81       250
+             crab_cakes       0.61      0.72      0.66       250
+           creme_brulee       0.87      0.86      0.86       250
+          croque_madame       0.82      0.88      0.85       250
+              cup_cakes       0.78      0.81      0.80       250
+           deviled_eggs       0.86      0.92      0.89       250
+                 donuts       0.78      0.74      0.76       250
+              dumplings       0.86      0.87      0.87       250
+                edamame       0.99      0.98      0.98       250
+          eggs_benedict       0.89      0.86      0.87       250
+              escargots       0.84      0.82      0.83       250
+                falafel       0.65      0.72      0.69       250
+           filet_mignon       0.55      0.66      0.60       250
+         fish_and_chips       0.78      0.83      0.80       250
+              foie_gras       0.62      0.45      0.52       250
+           french_fries       0.78      0.90      0.83       250
+      french_onion_soup       0.81      0.76      0.78       250
+           french_toast       0.65      0.74      0.70       250
+         fried_calamari       0.75      0.78      0.76       250
+             fried_rice       0.77      0.82      0.80       250
+          frozen_yogurt       0.81      0.86      0.84       250
+           garlic_bread       0.75      0.69      0.72       250
+                gnocchi       0.70      0.67      0.69       250
+            greek_salad       0.78      0.70      0.74       250
+grilled_cheese_sandwich       0.62      0.70      0.66       250
+         grilled_salmon       0.60      0.62      0.61       250
+              guacamole       0.76      0.89      0.82       250
+                  gyoza       0.77      0.80      0.79       250
+              hamburger       0.80      0.65      0.72       250
+      hot_and_sour_soup       0.91      0.89      0.90       250
+                hot_dog       0.80      0.80      0.80       250
+       huevos_rancheros       0.62      0.52      0.56       250
+                 hummus       0.71      0.69      0.70       250
+              ice_cream       0.63      0.59      0.61       250
+                lasagna       0.71      0.65      0.68       250
+         lobster_bisque       0.84      0.85      0.85       250
+  lobster_roll_sandwich       0.87      0.82      0.85       250
+    macaroni_and_cheese       0.72      0.72      0.72       250
+               macarons       0.89      0.89      0.89       250
+              miso_soup       0.92      0.90      0.91       250
+                mussels       0.91      0.86      0.88       250
+                 nachos       0.70      0.68      0.69       250
+               omelette       0.66      0.64      0.65       250
+            onion_rings       0.86      0.87      0.87       250
+                oysters       0.89      0.89      0.89       250
+               pad_thai       0.83      0.86      0.84       250
+                 paella       0.74      0.77      0.76       250
+               pancakes       0.85      0.82      0.83       250
+            panna_cotta       0.72      0.68      0.70       250
+            peking_duck       0.84      0.72      0.77       250
+                    pho       0.92      0.88      0.90       250
+                  pizza       0.85      0.85      0.85       250
+              pork_chop       0.54      0.41      0.47       250
+                poutine       0.85      0.82      0.84       250
+              prime_rib       0.82      0.79      0.80       250
+   pulled_pork_sandwich       0.77      0.72      0.75       250
+                  ramen       0.79      0.77      0.78       250
+                ravioli       0.63      0.49      0.55       250
+        red_velvet_cake       0.81      0.86      0.83       250
+                risotto       0.60      0.62      0.61       250
+                 samosa       0.68      0.66      0.67       250
+                sashimi       0.85      0.85      0.85       250
+               scallops       0.72      0.63      0.68       250
+          seaweed_salad       0.87      0.88      0.87       250
+       shrimp_and_grits       0.68      0.70      0.69       250
+    spaghetti_bolognese       0.86      0.86      0.86       250
+    spaghetti_carbonara       0.84      0.89      0.86       250
+           spring_rolls       0.78      0.69      0.73       250
+                  steak       0.50      0.42      0.46       250
+   strawberry_shortcake       0.79      0.81      0.80       250
+                  sushi       0.75      0.78      0.77       250
+                  tacos       0.58      0.72      0.64       250
+               takoyaki       0.82      0.87      0.84       250
+               tiramisu       0.75      0.75      0.75       250
+           tuna_tartare       0.67      0.67      0.67       250
+                waffles       0.75      0.84      0.80       250
+
+               accuracy                           0.75     25250
+              macro avg       0.75      0.75      0.75     25250
+           weighted avg       0.75      0.75      0.75     25250
+
+Confusion matrix saved.
+============================================================
+EXPERIMENT 8 COMPLETE
+============================================================
+Best configuration: bs16_sgd_cosine -> Test Accuracy 75.25%
+Findings saved -> /home/chirag.singh/project/outputs/experiment_8/experiment_8_findings.json

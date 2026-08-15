@@ -1,3 +1,0 @@
-CUDA available: True
-GPU: NVIDIA H100 NVL
-Train size: 75750  Test size: 25250  Classes: 101

@@ -1,0 +1,3 @@
+method,top1_acc,improvement_pts
+Zero-Shot CLIP (Experiment 1),84.19,0.0
+Linear Probe on Frozen CLIP (Experiment 3),87.41386138613862,3.2238613861386227

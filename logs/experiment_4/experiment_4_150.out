@@ -1,0 +1,157 @@
+CUDA available: True
+GPU: NVIDIA H100 NVL
+Device: cuda
+Config: {'model_name': 'openai/clip-vit-base-patch32', 'batch_size': 32, 'num_epochs': 12, 'learning_rate': 1e-05, 'weight_decay': 0.01, 'unfreeze_text_encoder': True, 'warmup_frac': 0.05, 'max_grad_norm': 1.0, 'val_split_frac': 0.1, 'num_workers': 4, 'use_amp': True}
+Trainable params: 151,277,313 / 151,277,313 (100.0%)
+Train size (full): 75750  Test size: 25250  Classes: 101
+Train (fine-tune) size: 68175  Val size: 7575
+Epoch 1: train_loss=0.9119  val_top1=76.78%  val_top5=94.01%  time=2926.7s
+  -> New best val accuracy: 76.78% (checkpoint saved)
+Epoch 2: train_loss=0.4817  val_top1=79.41%  val_top5=94.63%  time=2992.5s
+  -> New best val accuracy: 79.41% (checkpoint saved)
+Epoch 3: train_loss=0.2671  val_top1=78.24%  val_top5=94.44%  time=3150.3s
+Epoch 4: train_loss=0.1654  val_top1=78.55%  val_top5=93.99%  time=3231.4s
+Epoch 5: train_loss=0.1115  val_top1=78.26%  val_top5=93.73%  time=3243.2s
+Epoch 6: train_loss=0.0721  val_top1=79.34%  val_top5=93.80%  time=3178.5s
+Epoch 7: train_loss=0.0391  val_top1=80.28%  val_top5=94.38%  time=2604.0s
+  -> New best val accuracy: 80.28% (checkpoint saved)
+Epoch 8: train_loss=0.0157  val_top1=80.65%  val_top5=94.44%  time=2219.9s
+  -> New best val accuracy: 80.65% (checkpoint saved)
+Epoch 9: train_loss=0.0039  val_top1=81.60%  val_top5=94.83%  time=2249.6s
+  -> New best val accuracy: 81.60% (checkpoint saved)
+Epoch 10: train_loss=0.0007  val_top1=81.94%  val_top5=94.98%  time=1859.9s
+  -> New best val accuracy: 81.94% (checkpoint saved)
+Epoch 11: train_loss=0.0001  val_top1=82.19%  val_top5=95.00%  time=414.1s
+  -> New best val accuracy: 82.19% (checkpoint saved)
+Epoch 12: train_loss=0.0000  val_top1=82.28%  val_top5=95.01%  time=405.5s
+  -> New best val accuracy: 82.28% (checkpoint saved)
+    epoch  train_loss  val_top1_acc  val_top5_acc            lr  epoch_time_sec
+0       1    0.911867     76.778878     94.006601  9.829629e-06     2926.742269
+1       2    0.481728     79.405941     94.627063  9.330127e-06     2992.503884
+2       3    0.267134     78.244224     94.442244  8.535534e-06     3150.298090
+3       4    0.165436     78.547855     93.993399  7.500000e-06     3231.375316
+4       5    0.111468     78.257426     93.729373  6.294095e-06     3243.203284
+5       6    0.072088     79.339934     93.795380  5.000000e-06     3178.548476
+6       7    0.039061     80.277228     94.376238  3.705905e-06     2604.045350
+7       8    0.015656     80.646865     94.442244  2.500000e-06     2219.940367
+8       9    0.003879     81.597360     94.825083  1.464466e-06     2249.601462
+9      10    0.000659     81.940594     94.983498  6.698730e-07     1859.921573
+10     11    0.000124     82.191419     94.996700  1.703709e-07      414.113735
+11     12    0.000045     82.283828     95.009901  0.000000e+00      405.482875
+
+Fine-Tuned CLIP — Test Top-1: 86.66%  Test Top-5: 97.15%
+                         precision    recall  f1-score   support
+
+              apple_pie       0.76      0.71      0.74       250
+         baby_back_ribs       0.84      0.87      0.86       250
+                baklava       0.88      0.88      0.88       250
+         beef_carpaccio       0.90      0.92      0.91       250
+           beef_tartare       0.83      0.82      0.83       250
+             beet_salad       0.79      0.82      0.81       250
+               beignets       0.88      0.92      0.90       250
+               bibimbap       0.95      0.92      0.93       250
+          bread_pudding       0.72      0.70      0.71       250
+      breakfast_burrito       0.83      0.76      0.79       250
+             bruschetta       0.84      0.79      0.81       250
+           caesar_salad       0.89      0.92      0.91       250
+                cannoli       0.91      0.91      0.91       250
+          caprese_salad       0.86      0.86      0.86       250
+            carrot_cake       0.85      0.84      0.84       250
+                ceviche       0.81      0.76      0.79       250
+           cheese_plate       0.97      0.92      0.94       250
+             cheesecake       0.78      0.82      0.80       250
+          chicken_curry       0.85      0.83      0.84       250
+     chicken_quesadilla       0.81      0.86      0.83       250
+          chicken_wings       0.93      0.90      0.91       250
+         chocolate_cake       0.79      0.76      0.78       250
+       chocolate_mousse       0.71      0.74      0.73       250
+                churros       0.92      0.93      0.93       250
+           clam_chowder       0.88      0.91      0.90       250
+          club_sandwich       0.94      0.87      0.90       250
+             crab_cakes       0.82      0.76      0.79       250
+           creme_brulee       0.89      0.95      0.92       250
+          croque_madame       0.91      0.90      0.90       250
+              cup_cakes       0.89      0.95      0.92       250
+           deviled_eggs       0.96      0.96      0.96       250
+                 donuts       0.89      0.88      0.89       250
+              dumplings       0.93      0.90      0.92       250
+                edamame       0.99      0.99      0.99       250
+          eggs_benedict       0.92      0.93      0.92       250
+              escargots       0.89      0.92      0.90       250
+                falafel       0.90      0.79      0.84       250
+           filet_mignon       0.70      0.74      0.72       250
+         fish_and_chips       0.93      0.94      0.93       250
+              foie_gras       0.70      0.75      0.72       250
+           french_fries       0.92      0.96      0.94       250
+      french_onion_soup       0.83      0.90      0.87       250
+           french_toast       0.88      0.80      0.84       250
+         fried_calamari       0.91      0.86      0.88       250
+             fried_rice       0.88      0.90      0.89       250
+          frozen_yogurt       0.93      0.95      0.94       250
+           garlic_bread       0.81      0.88      0.84       250
+                gnocchi       0.81      0.78      0.80       250
+            greek_salad       0.89      0.90      0.89       250
+grilled_cheese_sandwich       0.76      0.84      0.80       250
+         grilled_salmon       0.79      0.83      0.81       250
+              guacamole       0.90      0.96      0.93       250
+                  gyoza       0.87      0.86      0.87       250
+              hamburger       0.91      0.81      0.86       250
+      hot_and_sour_soup       0.91      0.96      0.93       250
+                hot_dog       0.93      0.91      0.92       250
+       huevos_rancheros       0.80      0.79      0.79       250
+                 hummus       0.85      0.91      0.88       250
+              ice_cream       0.87      0.80      0.83       250
+                lasagna       0.80      0.78      0.79       250
+         lobster_bisque       0.87      0.90      0.89       250
+  lobster_roll_sandwich       0.92      0.92      0.92       250
+    macaroni_and_cheese       0.82      0.86      0.84       250
+               macarons       0.98      0.96      0.97       250
+              miso_soup       0.95      0.94      0.94       250
+                mussels       0.94      0.94      0.94       250
+                 nachos       0.85      0.83      0.84       250
+               omelette       0.86      0.83      0.84       250
+            onion_rings       0.91      0.96      0.93       250
+                oysters       0.96      0.98      0.97       250
+               pad_thai       0.94      0.96      0.95       250
+                 paella       0.91      0.88      0.90       250
+               pancakes       0.89      0.90      0.89       250
+            panna_cotta       0.79      0.82      0.81       250
+            peking_duck       0.92      0.88      0.90       250
+                    pho       0.94      0.95      0.95       250
+                  pizza       0.94      0.92      0.93       250
+              pork_chop       0.71      0.70      0.70       250
+                poutine       0.94      0.91      0.92       250
+              prime_rib       0.83      0.86      0.85       250
+   pulled_pork_sandwich       0.90      0.88      0.89       250
+                  ramen       0.90      0.91      0.90       250
+                ravioli       0.73      0.74      0.73       250
+        red_velvet_cake       0.92      0.89      0.91       250
+                risotto       0.77      0.78      0.77       250
+                 samosa       0.91      0.86      0.88       250
+                sashimi       0.92      0.93      0.93       250
+               scallops       0.80      0.76      0.78       250
+          seaweed_salad       0.93      0.96      0.95       250
+       shrimp_and_grits       0.82      0.87      0.84       250
+    spaghetti_bolognese       0.96      0.95      0.95       250
+    spaghetti_carbonara       0.94      0.95      0.94       250
+           spring_rolls       0.91      0.87      0.89       250
+                  steak       0.59      0.58      0.58       250
+   strawberry_shortcake       0.88      0.84      0.86       250
+                  sushi       0.93      0.90      0.92       250
+                  tacos       0.80      0.84      0.82       250
+               takoyaki       0.94      0.94      0.94       250
+               tiramisu       0.83      0.80      0.81       250
+           tuna_tartare       0.74      0.78      0.76       250
+                waffles       0.92      0.92      0.92       250
+
+               accuracy                           0.87     25250
+              macro avg       0.87      0.87      0.87     25250
+           weighted avg       0.87      0.87      0.87     25250
+
+                          method   top1_acc  improvement_vs_zeroshot_pts
+0  Zero-Shot CLIP (Experiment 1)  84.190000                     0.000000
+1    Linear Probe (Experiment 3)  87.413861                     3.223861
+2  Full Fine-Tune (Experiment 4)  86.661386                     2.471386
+
+Experiment 4 complete.
+Zero-shot: 84.19%  |  Linear probe: 87.41%  |  Full fine-tune: 86.66%

@@ -1,0 +1,112 @@
+Model: google/siglip-base-patch16-224
+Prompt: a photo of {class}, a type of food
+Top-1 Accuracy: 91.62%
+Top-5 Accuracy: 98.99%
+
+                         precision    recall  f1-score   support
+
+              apple_pie     0.9234    0.7720    0.8410       250
+         baby_back_ribs     0.9569    0.8880    0.9212       250
+                baklava     0.9871    0.9160    0.9502       250
+         beef_carpaccio     0.9781    0.8920    0.9331       250
+           beef_tartare     0.8864    0.7800    0.8298       250
+             beet_salad     0.8028    0.9120    0.8539       250
+               beignets     0.8339    0.9640    0.8942       250
+               bibimbap     0.9795    0.9560    0.9676       250
+          bread_pudding     0.7568    0.8840    0.8155       250
+      breakfast_burrito     0.9127    0.9200    0.9163       250
+             bruschetta     0.9163    0.9200    0.9182       250
+           caesar_salad     0.9423    0.9800    0.9608       250
+                cannoli     0.9490    0.9680    0.9584       250
+          caprese_salad     0.9914    0.9200    0.9544       250
+            carrot_cake     0.9206    0.9280    0.9243       250
+                ceviche     0.9017    0.8440    0.8719       250
+           cheese_plate     0.9798    0.9680    0.9738       250
+             cheesecake     0.9414    0.8360    0.8856       250
+          chicken_curry     0.9649    0.8800    0.9205       250
+     chicken_quesadilla     0.9516    0.9440    0.9478       250
+          chicken_wings     0.9647    0.9840    0.9743       250
+         chocolate_cake     0.8942    0.7440    0.8122       250
+       chocolate_mousse     0.6647    0.8960    0.7632       250
+                churros     0.9918    0.9640    0.9777       250
+           clam_chowder     0.9407    0.8880    0.9136       250
+          club_sandwich     0.9750    0.9360    0.9551       250
+             crab_cakes     0.8920    0.8920    0.8920       250
+           creme_brulee     0.8792    0.9320    0.9049       250
+          croque_madame     0.9008    0.9440    0.9219       250
+              cup_cakes     0.9471    0.7880    0.8603       250
+           deviled_eggs     0.9958    0.9560    0.9755       250
+                 donuts     0.9915    0.9360    0.9630       250
+              dumplings     0.8889    0.9280    0.9080       250
+                edamame     1.0000    1.0000    1.0000       250
+          eggs_benedict     0.9308    0.9680    0.9490       250
+              escargots     0.9449    0.8920    0.9177       250
+                falafel     0.9530    0.8920    0.9215       250
+           filet_mignon     0.7333    0.8360    0.7813       250
+         fish_and_chips     0.9423    0.9800    0.9608       250
+              foie_gras     0.7282    0.8360    0.7784       250
+           french_fries     0.9641    0.9680    0.9661       250
+      french_onion_soup     0.8755    0.9000    0.8876       250
+           french_toast     0.9016    0.9160    0.9087       250
+         fried_calamari     0.9467    0.9240    0.9352       250
+             fried_rice     0.9286    0.9360    0.9323       250
+          frozen_yogurt     0.8091    1.0000    0.8945       250
+           garlic_bread     0.9582    0.9160    0.9366       250
+                gnocchi     0.9167    0.9240    0.9203       250
+            greek_salad     0.9478    0.9440    0.9459       250
+grilled_cheese_sandwich     0.9444    0.8840    0.9132       250
+         grilled_salmon     0.9425    0.8520    0.8950       250
+              guacamole     0.9958    0.9520    0.9734       250
+                  gyoza     0.9558    0.8640    0.9076       250
+              hamburger     0.9312    0.9200    0.9256       250
+      hot_and_sour_soup     0.8750    0.9800    0.9245       250
+                hot_dog     0.9681    0.9720    0.9701       250
+       huevos_rancheros     0.8713    0.9480    0.9080       250
+                 hummus     0.9749    0.9320    0.9530       250
+              ice_cream     0.8945    0.7120    0.7929       250
+                lasagna     0.9524    0.8800    0.9148       250
+         lobster_bisque     0.8368    0.9640    0.8959       250
+  lobster_roll_sandwich     0.9644    0.9760    0.9702       250
+    macaroni_and_cheese     0.9818    0.8640    0.9191       250
+               macarons     0.9921    1.0000    0.9960       250
+              miso_soup     0.9004    0.9400    0.9198       250
+                mussels     0.9793    0.9480    0.9634       250
+                 nachos     0.8736    0.9680    0.9184       250
+               omelette     0.9336    0.9000    0.9165       250
+            onion_rings     0.9228    0.9560    0.9391       250
+                oysters     0.9839    0.9800    0.9820       250
+               pad_thai     0.9721    0.9760    0.9741       250
+                 paella     0.9623    0.9200    0.9407       250
+               pancakes     0.9482    0.9520    0.9501       250
+            panna_cotta     0.7952    0.9320    0.8582       250
+            peking_duck     0.9628    0.9320    0.9472       250
+                    pho     0.9718    0.9640    0.9679       250
+                  pizza     0.9537    0.9880    0.9705       250
+              pork_chop     0.7457    0.8680    0.8022       250
+                poutine     0.9423    0.9800    0.9608       250
+              prime_rib     0.8760    0.8760    0.8760       250
+   pulled_pork_sandwich     0.9289    0.9400    0.9344       250
+                  ramen     0.9864    0.8680    0.9234       250
+                ravioli     0.9452    0.8280    0.8827       250
+        red_velvet_cake     0.7838    0.9280    0.8498       250
+                risotto     0.8972    0.9080    0.9026       250
+                 samosa     0.9871    0.9200    0.9524       250
+                sashimi     0.9380    0.9680    0.9528       250
+               scallops     0.9114    0.8640    0.8871       250
+          seaweed_salad     0.9646    0.9800    0.9722       250
+       shrimp_and_grits     0.8606    0.9880    0.9199       250
+    spaghetti_bolognese     0.9918    0.9720    0.9818       250
+    spaghetti_carbonara     0.9839    0.9760    0.9799       250
+           spring_rolls     0.9091    0.9600    0.9339       250
+                  steak     0.7200    0.5760    0.6400       250
+   strawberry_shortcake     0.9378    0.9040    0.9206       250
+                  sushi     0.9551    0.9360    0.9455       250
+                  tacos     0.9454    0.9000    0.9221       250
+               takoyaki     0.9955    0.8800    0.9342       250
+               tiramisu     0.8889    0.9280    0.9080       250
+           tuna_tartare     0.7606    0.8640    0.8090       250
+                waffles     0.9683    0.9760    0.9721       250
+
+               accuracy                         0.9162     25250
+              macro avg     0.9203    0.9162    0.9165     25250
+           weighted avg     0.9203    0.9162    0.9165     25250

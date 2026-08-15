@@ -1,0 +1,2 @@
+/home/chirag.singh/project/scripts/Experiment_8.py:460: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator. Otherwise, ticks may be mislabeled.
+  ax.set_xticklabels(sorted_df["tag"], rotation=90, fontsize=7)
