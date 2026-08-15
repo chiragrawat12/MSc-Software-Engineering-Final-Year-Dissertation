@@ -46,8 +46,8 @@ The scripts run on any CUDA GPU, but training times will differ.
 ## Setup
 
 ```bash
-git clone https://github.com/YOURUSERNAME/YOURREPO.git
-cd YOURREPO
+git clone https://github.com/chiragrawat12/MSc-Software-Engineering-Final-Year-Dissertation
+cd MSc-Software-Engineering-Final-Year-Dissertation
 
 python -m venv ~/envs/myenv
 source ~/envs/myenv/bin/activate
@@ -211,29 +211,6 @@ run after the best checkpoint has been restored.
 Results in the dissertation come from single runs at seed 42. Experiment 6 is the
 exception, repeating each value of *K* across five sampling trials, because the
 variance at one image per class is too large for a single run to be meaningful.
-
----
-
-## Known issues
-
-**`regenerate_predictions.py` exists for a reason.** The four baseline training
-scripts, as originally written, printed a classification report without saving
-per-image predictions. Experiment 9 needs those predictions. Rather than
-retraining, this script loads each saved checkpoint, runs the test set once with
-shuffling disabled, and writes the predictions, per-class accuracies and
-confusion matrices to disk. It performs inference only.
-
-**Transformers version sensitivity.** `get_image_features` returns either a plain
-tensor or a `BaseModelOutputWithPooling` depending on the library version. For
-CLIP the pooled output is already projected into the 512-dimensional shared
-space; applying `visual_projection` on top of it raises a shape error. SigLIP has
-no projection module at all, and its 768-dimensional pooled output is the
-embedding. The scripts handle both cases and assert the resulting dimensionality.
-
-**SigLIP tokenizer padding.** `SiglipProcessor` must be called with
-`padding="max_length"`. SigLIP was trained with all text padded to a fixed 64
-tokens, and the dynamic padding appropriate to CLIP measurably degrades its
-zero-shot accuracy.
 
 ---
 
