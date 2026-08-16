@@ -11,9 +11,9 @@ model is loaded, run over the Food-101 test set with shuffle=False, and its
 predictions written to disk.
 
 Usage:
-    python regenerate_predictions.py                    # all models
-    python regenerate_predictions.py --models resnet50  # just one
-    python regenerate_predictions.py --list             # show discovered paths
+  python regenerate_predictions.py                     # all models
+  python regenerate_predictions.py --models resnet50    # just one
+  python regenerate_predictions.py --list                # show discovered paths
 """
 
 import argparse
@@ -70,7 +70,6 @@ WEIGHT_CANDIDATES = {
              "outputs/yolo/runs/classify/yolov8s_food101/weights/best.pt"],
 }
 
-
 def find_weights(key):
     for rel in WEIGHT_CANDIDATES[key]:
         f = PROJECT_ROOT / rel
@@ -81,14 +80,13 @@ def find_weights(key):
     hits = [f for f in PROJECT_ROOT.rglob(pattern) if key in f.name.lower()]
     return hits[0] if hits else None
 
-
 print("\nWeight files:")
 located = {}
 for k in ["alexnet", "resnet34", "resnet50", "yolo"]:
     w = find_weights(k)
     located[k] = w
     size = f"{w.stat().st_size/1e6:.0f} MB" if w else ""
-    print(f"  {k:<10s} {'FOUND   ' if w else 'MISSING '} "
+    print(f"  {k:<10s} {'FOUND ' if w else 'MISSING '} "
           f"{w.relative_to(PROJECT_ROOT) if w else ''} {size}")
 
 if args.list:
@@ -127,28 +125,24 @@ class AlexNet(nn.Module):
     def forward(self, x):
         return self.classifier(torch.flatten(self.features(x), 1))
 
-
 NORM = transforms.Normalize(mean=[0.485, 0.456, 0.406],
-                            std=[0.229, 0.224, 0.225])
-
+                             std=[0.229, 0.224, 0.225])
 
 def eval_transform(size):
     return transforms.Compose([transforms.Resize((size, size)),
-                               transforms.ToTensor(), NORM])
+                                transforms.ToTensor(), NORM])
 
-
+# Each entry maps a model key to its constructor and the input size it expects
 SPECS = {
-    "alexnet":  (lambda: AlexNet(101), 227),
+    "alexnet": (lambda: AlexNet(101), 227),
     "resnet34": (lambda: _resnet(models.resnet34, 512), 224),
     "resnet50": (lambda: _resnet(models.resnet50, 2048), 224),
 }
-
 
 def _resnet(fn, feat):
     m = fn(weights=None)
     m.fc = nn.Linear(feat, 101)
     return m
-
 
 # ---------------------------------------------------------------------------
 # Evaluation. shuffle=False is essential: index i must refer to the same image
@@ -174,9 +168,8 @@ def save_outputs(key, preds, labels, top5, logits):
     with open(out / "metrics.json", "w") as f:
         json.dump({"model": key, "top1": top1, "top5": top5a,
                    "n": int(len(labels))}, f, indent=2)
-    print(f"   top-1 {top1:.2f}%   top-5 {top5a:.2f}%   -> {out}")
+    print(f"  top-1 {top1:.2f}% top-5 {top5a:.2f}% -> {out}")
     return top1
-
 
 @torch.no_grad()
 def run_torch_model(key):
@@ -192,13 +185,13 @@ def run_torch_model(key):
     ds = Food101(root=str(DATA_ROOT), split="test", download=False,
                  transform=eval_transform(size))
     loader = DataLoader(ds, batch_size=args.batch_size, shuffle=False,
-                        num_workers=args.workers, pin_memory=True)
+                         num_workers=args.workers, pin_memory=True)
 
     P, L, T5, LG = [], [], [], []
     for x, y in tqdm(loader, desc=f"{key}: test set"):
         x = x.to(device, non_blocking=True)
         with torch.autocast("cuda", enabled=(device.type == "cuda"),
-                            dtype=torch.bfloat16):
+                             dtype=torch.bfloat16):
             out = model(x).float()
         t5 = torch.topk(out, k=5, dim=-1).indices.cpu().numpy()
         P.extend(t5[:, 0].tolist())
@@ -207,8 +200,7 @@ def run_torch_model(key):
         LG.append(out.cpu().numpy())
 
     return save_outputs(key, np.array(P), np.array(L),
-                        np.array(T5), np.concatenate(LG))
-
+                         np.array(T5), np.concatenate(LG))
 
 @torch.no_grad()
 def run_yolo():
@@ -230,8 +222,7 @@ def run_yolo():
         L.append(int(y)); LG.append(probs)
 
     return save_outputs("yolo", np.array(P), np.array(L),
-                        np.array(T5), np.stack(LG))
-
+                         np.array(T5), np.stack(LG))
 
 # ---------------------------------------------------------------------------
 
@@ -242,7 +233,7 @@ for key in args.models:
     try:
         results[key] = run_yolo() if key == "yolo" else run_torch_model(key)
     except Exception as e:
-        print(f"   {key} FAILED: {type(e).__name__}: {e}")
+        print(f"  {key} FAILED: {type(e).__name__}: {e}")
 
 # Verify every saved label array agrees, which is what makes the predictions
 # pairable in Experiment 9.

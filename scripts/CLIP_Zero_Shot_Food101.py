@@ -3,14 +3,11 @@
 
 # In[2]:
 
-
 import torch
 print("CUDA available:", torch.cuda.is_available())
 print("GPU:", torch.cuda.get_device_name(0))
 
-
 # In[4]:
-
 
 import torch
 from torch.utils.data import DataLoader
@@ -27,21 +24,19 @@ import os
 from dotenv import load_dotenv
 from huggingface_hub import login
 
-
 # In[5]:
-
 
 load_dotenv()  # reads .env from the current working directory
 
+# HF_TOKEN is needed to download the CLIP model/weights from Hugging Face
 hf_token = os.environ.get("HF_TOKEN")
 if hf_token is None:
     raise ValueError("HF_TOKEN environment variable not set")
 login(token=hf_token)
 
-
 # In[ ]:
 
-
+# Paths for the dataset and all output files (reports, saved arrays, plots)
 script_dir = os.path.dirname(os.path.abspath(__file__))
 data_root = os.path.join(script_dir, '..', 'data')
 clip_zeroshot_classification_report = os.path.join(script_dir, '..', 'outputs/clipzeroshot/clip_zeroshot_classification_report.txt')
@@ -53,21 +48,18 @@ clip_top10_confused_pairs = os.path.join(script_dir, '..', 'outputs/clipzeroshot
 clip_per_class_accuracy = os.path.join(script_dir, '..', 'outputs/clipzeroshot/images/clip_per_class_accuracy.png')
 clip_sample_misclassifications = os.path.join(script_dir, '..', 'outputs/clipzeroshot/images/clip_sample_misclassifications.png')
 
-
 # In[5]:
-
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
+# Pretrained CLIP model, used as-is with no fine-tuning (zero-shot setup)
 model_name = "openai/clip-vit-base-patch32"
 clip_model = CLIPModel.from_pretrained(model_name, use_safetensors=True).to(device)
 clip_processor = CLIPProcessor.from_pretrained(model_name)
 
 clip_model.eval()  # inference only, no training
 
-
 # In[6]:
-
 
 test_dataset_raw = Food101(root=data_root, split='test', download=True, transform=None)
 
@@ -77,13 +69,12 @@ print(f"Classes: {len(test_dataset_raw.classes)}")
 class_names = test_dataset_raw.classes
 print(class_names[:5])
 
-
 # In[7]:
-
 
 def format_class_name(name):
     return name.replace("_", " ")
 
+# Build a text prompt per class for CLIP's zero-shot text encoder
 text_prompts = [f"a photo of {format_class_name(c)}, a type of food" for c in class_names]
 
 text_inputs = clip_processor(text=text_prompts, return_tensors="pt", padding=True).to(device)
@@ -91,22 +82,23 @@ text_inputs = clip_processor(text=text_prompts, return_tensors="pt", padding=Tru
 with torch.no_grad():
     text_output = clip_model.get_text_features(**text_inputs)
 
-    if hasattr(text_output, "pooler_output"):
-        text_features = text_output.pooler_output
-    elif hasattr(text_output, "text_embeds"):
-        text_features = text_output.text_embeds
-    else:
-        text_features = text_output
+# Different transformers versions return text embeddings under different attribute names
+if hasattr(text_output, "pooler_output"):
+    text_features = text_output.pooler_output
+elif hasattr(text_output, "text_embeds"):
+    text_features = text_output.text_embeds
+else:
+    text_features = text_output
 
-    text_features = text_features / text_features.norm(dim=-1, keepdim=True)
+# Normalize so the dot product with image features gives cosine similarity
+text_features = text_features / text_features.norm(dim=-1, keepdim=True)
 
 print("Text features shape:", text_features.shape)  # should print [101, 512]
 
-
 # In[8]:
 
-
 def collate_fn(batch):
+    # Keep raw PIL images and labels separate, CLIP processor handles image preprocessing later
     images = [item[0] for item in batch]
     labels = [item[1] for item in batch]
     return images, labels
@@ -115,18 +107,17 @@ test_loader = DataLoader(
     test_dataset_raw,
     batch_size=64,
     shuffle=False,
-    num_workers=4,    
+    num_workers=4,
     collate_fn=collate_fn
 )
 
-
 # In[9]:
-
 
 all_preds = []
 all_top5_preds = []
 all_labels = []
 
+# Run zero-shot classification: compare each image's embedding against all class text embeddings
 with torch.no_grad():
     for images, labels in tqdm(test_loader, desc="Zero-shot CLIP inference"):
         image_inputs = clip_processor(images=images, return_tensors="pt").to(device)
@@ -142,6 +133,7 @@ with torch.no_grad():
 
         image_features = image_features / image_features.norm(dim=-1, keepdim=True)
 
+        # Scaled cosine similarity between image and text embeddings, converted to probabilities
         similarity = (image_features @ text_features.T) * clip_model.logit_scale.exp()
         probs = similarity.softmax(dim=-1)
 
@@ -152,9 +144,7 @@ with torch.no_grad():
         all_top5_preds.extend(top5.tolist())
         all_labels.extend(labels)
 
-
 # In[10]:
-
 
 all_preds = np.array(all_preds)
 all_labels = np.array(all_labels)
@@ -166,9 +156,7 @@ top5_acc = np.mean([label in top5row for label, top5row in zip(all_labels, all_t
 print(f"\nZero-Shot CLIP Top-1 Accuracy: {top1_acc:.2f}%")
 print(f"Zero-Shot CLIP Top-5 Accuracy: {top5_acc:.2f}%")
 
-
 # In[11]:
-
 
 report = classification_report(all_labels, all_preds, target_names=class_names)
 print(report)
@@ -178,15 +166,15 @@ with open(clip_zeroshot_classification_report, "w") as f:
     f.write(f"Top-5 Accuracy: {top5_acc:.2f}%\n\n")
     f.write(report)
 
-
 # In[12]:
-
 
 cm = confusion_matrix(all_labels, all_preds)
 
+# Normalize rows to get per-class confusion rates, zero out the diagonal (correct predictions)
 cm_normalized = cm.astype('float') / cm.sum(axis=1, keepdims=True)
 np.fill_diagonal(cm_normalized, 0)
 
+# For each class, find the class it's most often confused with
 confused_pairs = []
 for i in range(len(class_names)):
     j = np.argmax(cm_normalized[i])
@@ -197,9 +185,7 @@ print("Top 10 most confused class pairs:")
 for true_c, pred_c, rate in confused_pairs[:10]:
     print(f"{true_c} -> {pred_c}: {rate*100:.1f}%")
 
-
 # In[13]:
-
 
 np.save(clip_zeroshot_preds, all_preds)
 np.save(clip_zeroshot_labels, all_labels)
@@ -210,14 +196,14 @@ results_summary = {
     "top1_accuracy": top1_acc,
     "top5_accuracy": top5_acc,
 }
-print(results_summary)
 
+print(results_summary)
 
 # In[14]:
 
-
 import seaborn as sns
 
+# Full confusion matrix heatmap across all 101 classes
 plt.figure(figsize=(20, 18))
 sns.heatmap(cm_normalized, cmap="Reds", xticklabels=class_names, yticklabels=class_names)
 plt.title("CLIP Zero-Shot Confusion Matrix (Food-101)", fontsize=16)
@@ -229,9 +215,7 @@ plt.tight_layout()
 plt.savefig(clip_confusion_matrix_heatmap, dpi=200)
 plt.show()
 
-
 # In[15]:
-
 
 pairs_labels = [f"{a} → {b}" for a, b, _ in confused_pairs[:10]]
 pairs_values = [rate * 100 for _, _, rate in confused_pairs[:10]]
@@ -244,12 +228,11 @@ plt.tight_layout()
 plt.savefig(clip_top10_confused_pairs, dpi=200)
 plt.show()
 
-
 # In[16]:
-
 
 from sklearn.metrics import accuracy_score
 
+# Per-class accuracy, used to find the best and worst performing food categories
 per_class_acc = []
 for i, cname in enumerate(class_names):
     mask = all_labels == i
@@ -275,14 +258,14 @@ plt.tight_layout()
 plt.savefig(clip_per_class_accuracy, dpi=200)
 plt.show()
 
-
 # In[18]:
-
 
 import random
 
+# Reload dataset for display purposes only (images not needed during the inference loop above)
 test_dataset_display = Food101(root=data_root, split='test', download=False, transform=None)
 
+# Sample a few misclassified images to visually inspect what the model got wrong
 wrong_indices = np.where(all_preds != all_labels)[0]
 sample_wrong = random.sample(list(wrong_indices), 8)
 
@@ -297,4 +280,3 @@ for ax, idx in zip(axes.flatten(), sample_wrong):
 plt.tight_layout()
 plt.savefig(clip_sample_misclassifications, dpi=200)
 plt.show()
-

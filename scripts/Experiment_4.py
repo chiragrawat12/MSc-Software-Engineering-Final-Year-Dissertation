@@ -3,14 +3,11 @@
 
 # In[2]:
 
-
 import torch
-print("CUDA available:", torch.cuda.is_available())   # Must print True
-print("GPU:", torch.cuda.get_device_name(0))          # Should print RTX 4050
-
+print("CUDA available:", torch.cuda.is_available())  # Must print True
+print("GPU:", torch.cuda.get_device_name(0))  # Should print RTX 4050
 
 # In[4]:
-
 
 import torch
 import torch.nn as nn
@@ -33,19 +30,16 @@ import random
 from dotenv import load_dotenv
 from huggingface_hub import login
 
-
 # In[5]:
 
-
+# Fix seeds across all RNGs so the train/val split and training run are reproducible
 SEED = 42
 random.seed(SEED)
 np.random.seed(SEED)
 torch.manual_seed(SEED)
 torch.cuda.manual_seed_all(SEED)
 
-
 # In[7]:
-
 
 load_dotenv()
 hf_token = os.environ.get("HF_TOKEN")
@@ -53,9 +47,7 @@ if hf_token is None:
     raise ValueError("HF_TOKEN environment variable not set")
 login(token=hf_token)
 
-
 # In[14]:
-
 
 try:
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -63,6 +55,7 @@ except NameError:
     script_dir = os.getcwd()
 data_root = os.path.join(script_dir, "..", "data")
 
+# Paths for checkpoints and all Experiment 4 (full fine-tuning) outputs
 exp4_dir = os.path.join(script_dir, "..", "outputs", "experiment_4")
 exp4_img_dir = os.path.join(exp4_dir, "images")
 exp4_ckpt_dir = os.path.join(exp4_dir, "checkpoints")
@@ -81,38 +74,32 @@ finetune_acc_curve_png = os.path.join(exp4_img_dir, "finetune_accuracy_curve.png
 finetune_comparison_png = os.path.join(exp4_img_dir, "finetune_vs_zeroshot_vs_linearprobe.png")
 finetune_confmat_png = os.path.join(exp4_img_dir, "finetune_confusion_matrix.png")
 
-
 # In[15]:
-
 
 CONFIG = {
     "model_name": "openai/clip-vit-base-patch32",
     "batch_size": 32,
-    "num_epochs": 12,          # within the 10-15 range specified
-    "learning_rate": 1e-5,     # small LR to avoid catastrophic forgetting
+    "num_epochs": 12,  # within the 10-15 range specified
+    "learning_rate": 1e-5,  # small LR to avoid catastrophic forgetting
     "weight_decay": 0.01,
-    "unfreeze_text_encoder": True,   # set False to fine-tune image encoder only
+    "unfreeze_text_encoder": True,  # set False to fine-tune image encoder only
     "warmup_frac": 0.05,
     "max_grad_norm": 1.0,
-    "val_split_frac": 0.10,    # held-out slice of train for validation/early stopping
+    "val_split_frac": 0.10,  # held-out slice of train for validation/early stopping
     "num_workers": 4,
-    "use_amp": True,           # mixed precision for speed/memory
+    "use_amp": True,  # mixed precision for speed/memory
 }
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print("Device:", device)
 print("Config:", CONFIG)
 
-
 # In[16]:
-
 
 clip_model = CLIPModel.from_pretrained(CONFIG["model_name"], use_safetensors=True).to(device)
 clip_processor = CLIPProcessor.from_pretrained(CONFIG["model_name"])
 
-
 # In[17]:
-
 
 # Always unfreeze the vision tower (image encoder) — this is the core requirement.
 for p in clip_model.vision_model.parameters():
@@ -120,6 +107,7 @@ for p in clip_model.vision_model.parameters():
 for p in clip_model.visual_projection.parameters():
     p.requires_grad = True
 
+# Text encoder is optionally trainable too, controlled by CONFIG["unfreeze_text_encoder"]
 if CONFIG["unfreeze_text_encoder"]:
     for p in clip_model.text_model.parameters():
         p.requires_grad = True
@@ -138,21 +126,18 @@ total_params = sum(p.numel() for p in clip_model.parameters())
 print(f"Trainable params: {trainable_params:,} / {total_params:,} "
       f"({100*trainable_params/total_params:.1f}%)")
 
-
 # In[18]:
-
 
 full_train_dataset = Food101(root=data_root, split="train", download=True, transform=None)
 test_dataset = Food101(root=data_root, split="test", download=True, transform=None)
 
 class_names = full_train_dataset.classes
 num_classes = len(class_names)
-print(f"Train size (full): {len(full_train_dataset)}  Test size: {len(test_dataset)}  Classes: {num_classes}")
-
+print(f"Train size (full): {len(full_train_dataset)} Test size: {len(test_dataset)} Classes: {num_classes}")
 
 # In[19]:
 
-
+# Carve out a validation split from train for checkpoint selection (best epoch by val accuracy)
 val_size = int(len(full_train_dataset) * CONFIG["val_split_frac"])
 train_size = len(full_train_dataset) - val_size
 
@@ -161,11 +146,10 @@ train_subset, val_subset = torch.utils.data.random_split(
     [train_size, val_size],
     generator=torch.Generator().manual_seed(SEED)
 )
-print(f"Train (fine-tune) size: {len(train_subset)}  Val size: {len(val_subset)}")
 
+print(f"Train (fine-tune) size: {len(train_subset)} Val size: {len(val_subset)}")
 
 # In[20]:
-
 
 def format_class_name(name):
     return name.replace("_", " ")
@@ -175,9 +159,7 @@ def build_prompts(names):
 
 class_prompts = build_prompts(class_names)
 
-
 # In[21]:
-
 
 def collate_fn(batch):
     images = [item[0] for item in batch]
@@ -188,10 +170,12 @@ train_loader = DataLoader(
     train_subset, batch_size=CONFIG["batch_size"], shuffle=True,
     num_workers=CONFIG["num_workers"], collate_fn=collate_fn, drop_last=True
 )
+
 val_loader = DataLoader(
     val_subset, batch_size=CONFIG["batch_size"], shuffle=False,
     num_workers=CONFIG["num_workers"], collate_fn=collate_fn
 )
+
 test_loader = DataLoader(
     test_dataset, batch_size=CONFIG["batch_size"], shuffle=False,
     num_workers=CONFIG["num_workers"], collate_fn=collate_fn
@@ -226,10 +210,9 @@ def get_image_features_live(images):
     image_features = image_features / image_features.norm(dim=-1, keepdim=True)
     return image_features
 
-
 # In[24]:
 
-
+# Only pass trainable parameters to the optimizer (frozen params are skipped)
 optimizer = AdamW(
     filter(lambda p: p.requires_grad, clip_model.parameters()),
     lr=CONFIG["learning_rate"],
@@ -241,9 +224,7 @@ scheduler = CosineAnnealingLR(optimizer, T_max=num_training_steps)
 
 scaler = torch.amp.GradScaler('cuda', enabled=CONFIG["use_amp"])
 
-
 # In[25]:
-
 
 @torch.no_grad()
 def evaluate_model(loader, desc="Evaluating"):
@@ -276,10 +257,10 @@ def evaluate_model(loader, desc="Evaluating"):
 
     return top1_acc, top5_acc, all_preds, all_labels, all_top5
 
-
 # In[26]:
 
-
+# Main fine-tuning loop: trains the unfrozen CLIP layers using image-to-text classification loss,
+# tracks validation accuracy each epoch, and checkpoints both the latest and best-so-far model
 history = []
 best_val_acc = -1.0
 
@@ -310,6 +291,7 @@ for epoch in range(1, CONFIG["num_epochs"] + 1):
             filter(lambda p: p.requires_grad, clip_model.parameters()),
             CONFIG["max_grad_norm"]
         )
+
         scaler.step(optimizer)
         scaler.update()
         scheduler.step()
@@ -332,8 +314,8 @@ for epoch in range(1, CONFIG["num_epochs"] + 1):
         "epoch_time_sec": epoch_time,
     })
 
-    print(f"Epoch {epoch}: train_loss={avg_train_loss:.4f}  "
-          f"val_top1={val_top1:.2f}%  val_top5={val_top5:.2f}%  "
+    print(f"Epoch {epoch}: train_loss={avg_train_loss:.4f} "
+          f"val_top1={val_top1:.2f}% val_top5={val_top5:.2f}% "
           f"time={epoch_time:.1f}s")
 
     # Save last checkpoint every epoch
@@ -345,17 +327,13 @@ for epoch in range(1, CONFIG["num_epochs"] + 1):
         torch.save(clip_model.state_dict(), best_model_path)
         print(f"  -> New best val accuracy: {best_val_acc:.2f}% (checkpoint saved)")
 
-
 # In[ ]:
-
 
 history_df = pd.DataFrame(history)
 history_df.to_csv(finetune_history_csv, index=False)
 print(history_df)
 
-
 # In[ ]:
-
 
 fig, axes = plt.subplots(1, 2, figsize=(12, 5))
 
@@ -375,21 +353,19 @@ plt.tight_layout()
 plt.savefig(finetune_loss_curve_png, dpi=200)
 plt.show()
 
-
 # In[ ]:
 
-
+# Reload the best checkpoint (by val accuracy) before final testing, not the last epoch's weights
 clip_model.load_state_dict(torch.load(best_model_path, map_location=device))
 clip_model.to(device)
 
 test_top1, test_top5, test_preds, test_labels, test_top5_preds = evaluate_model(
     test_loader, desc="Final Test Evaluation"
 )
-print(f"\nFine-Tuned CLIP — Test Top-1: {test_top1:.2f}%  Test Top-5: {test_top5:.2f}%")
 
+print(f"\nFine-Tuned CLIP — Test Top-1: {test_top1:.2f}% Test Top-5: {test_top5:.2f}%")
 
 # In[ ]:
-
 
 report = classification_report(test_labels, test_preds, target_names=class_names)
 print(report)
@@ -399,9 +375,7 @@ with open(finetune_report_path, "w") as f:
     f.write(f"Fine-Tuned CLIP Test Top-5 Accuracy: {test_top5:.2f}%\n\n")
     f.write(report)
 
-
 # In[ ]:
-
 
 import seaborn as sns
 
@@ -419,14 +393,13 @@ plt.tight_layout()
 plt.savefig(finetune_confmat_png, dpi=200)
 plt.show()
 
-
 # In[ ]:
 
-
 # Update these two values from your actual saved results if they differ.
-zero_shot_top1_acc = 84.19     # from Experiment 1
-linear_probe_top1_acc = None   # e.g. load from outputs/experiment_3/linear_probe_vs_zeroshot.csv
+zero_shot_top1_acc = 84.19  # from Experiment 1
+linear_probe_top1_acc = None  # e.g. load from outputs/experiment_3/linear_probe_vs_zeroshot.csv
 
+# Pull the linear probe accuracy from Experiment 3's saved CSV instead of hardcoding it
 exp3_csv_path = os.path.join(script_dir, "..", "outputs", "experiment_3", "linear_probe_vs_zeroshot.csv")
 if os.path.exists(exp3_csv_path):
     exp3_df = pd.read_csv(exp3_csv_path)
@@ -447,9 +420,7 @@ comparison_df["improvement_vs_zeroshot_pts"] = comparison_df["top1_acc"] - zero_
 comparison_df.to_csv(finetune_comparison_csv, index=False)
 print(comparison_df)
 
-
 # In[ ]:
-
 
 plt.figure(figsize=(7, 5))
 colors = ["steelblue", "seagreen", "darkorange"]
@@ -464,6 +435,5 @@ plt.savefig(finetune_comparison_png, dpi=200)
 plt.show()
 
 print("\nExperiment 4 complete.")
-print(f"Zero-shot: {zero_shot_top1_acc:.2f}%  |  Linear probe: {linear_probe_top1_acc:.2f}%  |  "
+print(f"Zero-shot: {zero_shot_top1_acc:.2f}% | Linear probe: {linear_probe_top1_acc:.2f}% | "
       f"Full fine-tune: {test_top1:.2f}%")
-

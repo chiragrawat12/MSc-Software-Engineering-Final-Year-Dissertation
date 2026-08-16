@@ -3,14 +3,11 @@
 
 # In[ ]:
 
-
 import torch
 print("CUDA available:", torch.cuda.is_available())
 print("GPU:", torch.cuda.get_device_name(0))
 
-
 # In[ ]:
-
 
 import torch
 from torch.utils.data import DataLoader
@@ -29,9 +26,7 @@ import time
 from dotenv import load_dotenv
 from huggingface_hub import login
 
-
 # In[ ]:
-
 
 load_dotenv()
 hf_token = os.environ.get("HF_TOKEN")
@@ -39,10 +34,9 @@ if hf_token is None:
     raise ValueError("HF_TOKEN environment variable not set")
 login(token=hf_token)
 
-
 # In[ ]:
 
-
+# Paths for cached CLIP features/labels and the linear probe outputs (Experiment 3)
 script_dir = os.path.dirname(os.path.abspath(__file__))
 data_root = os.path.join(script_dir, "..", "data")
 
@@ -51,18 +45,16 @@ exp3_img_dir = os.path.join(exp3_dir, "images")
 os.makedirs(exp3_img_dir, exist_ok=True)
 
 clip_train_features_path = os.path.join(exp3_dir, "clip_train_features.npy")
-clip_train_labels_path   = os.path.join(exp3_dir, "clip_train_labels.npy")
-clip_test_features_path  = os.path.join(exp3_dir, "clip_test_features.npy")
-clip_test_labels_path    = os.path.join(exp3_dir, "clip_test_labels.npy")
+clip_train_labels_path = os.path.join(exp3_dir, "clip_train_labels.npy")
+clip_test_features_path = os.path.join(exp3_dir, "clip_test_features.npy")
+clip_test_labels_path = os.path.join(exp3_dir, "clip_test_labels.npy")
 
 linear_probe_report_path = os.path.join(exp3_dir, "linear_probe_classification_report.txt")
 linear_probe_results_csv = os.path.join(exp3_dir, "linear_probe_vs_zeroshot.csv")
 linear_probe_comparison_png = os.path.join(exp3_img_dir, "linear_probe_vs_zeroshot.png")
 linear_probe_confmat_png = os.path.join(exp3_img_dir, "linear_probe_confusion_matrix.png")
 
-
 # In[ ]:
-
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -72,21 +64,18 @@ clip_processor = CLIPProcessor.from_pretrained(model_name)
 
 clip_model.eval()
 for p in clip_model.parameters():
-    p.requires_grad = False   # freeze CLIP image encoder entirely
-
+    p.requires_grad = False  # freeze CLIP image encoder entirely
 
 # In[ ]:
 
-
+# Unlike Experiments 1-2 (zero-shot), this experiment needs a train split to fit the linear probe
 train_dataset_raw = Food101(root=data_root, split="train", download=True, transform=None)
-test_dataset_raw  = Food101(root=data_root, split="test",  download=True, transform=None)
+test_dataset_raw = Food101(root=data_root, split="test", download=True, transform=None)
 
 class_names = train_dataset_raw.classes
-print(f"Train size: {len(train_dataset_raw)}  Test size: {len(test_dataset_raw)}  Classes: {len(class_names)}")
-
+print(f"Train size: {len(train_dataset_raw)} Test size: {len(test_dataset_raw)} Classes: {len(class_names)}")
 
 # In[ ]:
-
 
 def collate_fn(batch):
     images = [item[0] for item in batch]
@@ -97,14 +86,13 @@ train_loader = DataLoader(
     train_dataset_raw, batch_size=64, shuffle=False,
     num_workers=4, collate_fn=collate_fn
 )
+
 test_loader = DataLoader(
     test_dataset_raw, batch_size=64, shuffle=False,
     num_workers=4, collate_fn=collate_fn
 )
 
-
 # In[ ]:
-
 
 def extract_features(loader, desc):
     """Run frozen CLIP image encoder over a dataloader, return L2-normalized features + labels."""
@@ -130,10 +118,9 @@ def extract_features(loader, desc):
     all_labels = np.array(all_labels)
     return all_feats, all_labels
 
-
 # In[ ]:
 
-
+# Extract train features once and cache them, feature extraction over the full train split is expensive
 if os.path.exists(clip_train_features_path) and os.path.exists(clip_train_labels_path):
     train_features = np.load(clip_train_features_path)
     train_labels = np.load(clip_train_labels_path)
@@ -144,13 +131,13 @@ else:
     np.save(clip_train_labels_path, train_labels)
     print("Train features shape:", train_features.shape)
 
-
 # In[ ]:
 
-
 exp2_test_features_path = os.path.join(script_dir, "..", "outputs", "experiment_2", "clip_image_features.npy")
-exp2_test_labels_path   = os.path.join(script_dir, "..", "outputs", "experiment_2", "clip_test_labels.npy")
+exp2_test_labels_path = os.path.join(script_dir, "..", "outputs", "experiment_2", "clip_test_labels.npy")
 
+# Test features are the same CLIP embeddings used in Experiment 2, so reuse them if available
+# instead of re-running the encoder over the whole test set again
 if os.path.exists(clip_test_features_path) and os.path.exists(clip_test_labels_path):
     test_features = np.load(clip_test_features_path)
     test_labels = np.load(clip_test_labels_path)
@@ -168,10 +155,9 @@ else:
     np.save(clip_test_labels_path, test_labels)
     print("Test features shape:", test_features.shape)
 
-
 # In[1]:
 
-
+# Train a linear classifier on top of the frozen CLIP embeddings (linear probing)
 print("Training linear probe (logistic regression) on frozen CLIP features...")
 start = time.time()
 
@@ -181,14 +167,13 @@ classifier = LogisticRegression(
     n_jobs=-1,
     random_state=42
 )
+
 classifier.fit(train_features, train_labels)
 
 train_time = time.time() - start
 print(f"Training completed in {train_time:.1f}s")
 
-
 # In[ ]:
-
 
 test_preds = classifier.predict(test_features)
 linear_probe_acc = accuracy_score(test_labels, test_preds) * 100
@@ -201,9 +186,7 @@ with open(linear_probe_report_path, "w") as f:
     f.write(f"Linear Probe Top-1 Accuracy: {linear_probe_acc:.2f}%\n\n")
     f.write(report)
 
-
 # In[ ]:
-
 
 # Update this value if your Experiment 1 baseline differs
 zero_shot_top1_acc = 84.19  # from Experiment 1 zero-shot CLIP result
@@ -216,9 +199,7 @@ comparison_df["improvement_pts"] = comparison_df["top1_acc"] - zero_shot_top1_ac
 comparison_df.to_csv(linear_probe_results_csv, index=False)
 print(comparison_df)
 
-
 # In[ ]:
-
 
 plt.figure(figsize=(6, 5))
 plt.bar(comparison_df["method"], comparison_df["top1_acc"], color=["steelblue", "seagreen"])
@@ -231,9 +212,7 @@ plt.tight_layout()
 plt.savefig(linear_probe_comparison_png, dpi=200)
 plt.show()
 
-
 # In[ ]:
-
 
 from sklearn.metrics import confusion_matrix
 import seaborn as sns
@@ -253,5 +232,4 @@ plt.savefig(linear_probe_confmat_png, dpi=200)
 plt.show()
 
 print("\nExperiment 3 complete.")
-print(f"Zero-shot: {zero_shot_top1_acc:.2f}%  ->  Linear probe: {linear_probe_acc:.2f}%  ({linear_probe_acc - zero_shot_top1_acc:+.2f} pts)")
-
+print(f"Zero-shot: {zero_shot_top1_acc:.2f}% -> Linear probe: {linear_probe_acc:.2f}% ({linear_probe_acc - zero_shot_top1_acc:+.2f} pts)")
